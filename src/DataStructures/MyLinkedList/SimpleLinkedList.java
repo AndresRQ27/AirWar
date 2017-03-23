@@ -54,7 +54,7 @@ public class SimpleLinkedList extends AbstractLinkedList {
     }
 
     @Override
-    public void switchNode(int position1, int position2){
+    public void swap(int position1, int position2){
 
         try {
             if (position1 > position2) {
