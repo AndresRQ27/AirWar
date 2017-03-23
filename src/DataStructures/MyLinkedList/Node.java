@@ -10,10 +10,28 @@ public class Node <T> {
     private Node previous;
     private T object;
 
+    /**
+     *
+     * @param object objeto que contiene el nodo
+     * @param next
+     * @param previous
+     */
     public Node(T object, Node next, Node previous){
         this.object = object;
         this.next = next;
         this.previous = previous;
+    }
+
+    public Node(T object, Node next){
+        this.object = object;
+        this.next = next;
+        this.previous = null;
+    }
+
+    public Node(T object){
+        this.object = object;
+        this.previous = null;
+        this.next = null;
     }
 
     public Node getNext() {
