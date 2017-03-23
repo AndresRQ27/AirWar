@@ -52,4 +52,42 @@ public class SimpleLinkedList extends AbstractLinkedList {
 
         length -= 1;
     }
+
+    @Override
+    public void switchNode(int position1, int position2){
+
+        try {
+            if (position1 > position2) {
+                int temp = position1;
+                position1 = position2;
+                position2 = temp;
+            }
+
+            Node aux1 = head;
+            Node aux2 = head;
+
+            for (int i = 0; i < position2 - 1; i++){
+                if (i == position1 - 1){
+                    aux1 = aux2;
+                } else if (i == position2 - 1){
+                    break;
+                }
+                aux2 = aux2.getNext();
+            }
+
+            Node change1 = aux1.getNext();
+            Node change2 = aux2.getNext();
+            Node temp = change1.getNext();
+
+            aux1.setNext(change2);
+            aux2.setNext(change1);
+
+            change1.setNext(change2.getNext());
+            change2.setNext(temp);
+
+
+        } catch (Exception e){
+            System.out.printf("%s%n", "Input unavailable");
+        }
+    }
 }

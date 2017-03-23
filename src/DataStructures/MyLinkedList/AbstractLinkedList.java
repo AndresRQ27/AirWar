@@ -79,18 +79,29 @@ public abstract class AbstractLinkedList <T>{
 
         boolean result = false;
 
-        if (length > 0) {
-
-            Node aux = head;
-
-            while (aux != null) {
-                if (aux.getObject().equals(object)) {
-                    result = true;
-                    break;
-                }
-            }
+        if (whereIs(object) != -1){
+            result = true;
         }
 
         return result;
     }
+
+    public int whereIs(T object){
+
+        Node aux = head;
+        int result = -1;
+
+        for (int j = 0; j < length; j++){
+            if (object.equals(aux.getObject())){
+                result = j;
+                break;
+            }
+            aux = aux.getNext();
+        }
+
+        return result;
+    }
+
+    //Methods switch
+    public abstract void switchNode(int position1, int position2);
 }
