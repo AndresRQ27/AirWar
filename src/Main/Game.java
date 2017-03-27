@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
  */
 public class Game extends JPanel{
     Player player = new Player(this);
-    Kamikaze kami = new Kamikaze(this,player,600,0);
+    Kamikaze kami = new Kamikaze(this,player,0,0);
 
 
     public Game() {
@@ -58,7 +58,7 @@ public class Game extends JPanel{
             game.update();
             game.repaint();
             try {
-                Thread.sleep(10);
+                Thread.sleep(15);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
