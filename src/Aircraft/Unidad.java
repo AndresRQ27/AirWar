@@ -30,8 +30,9 @@ public abstract class Unidad {
     public int posY;
     public boolean alive;
     public Game game;
+    public int municion;
 
-    public void daño(){
+    public void shoot(){
     }
 
     /**
@@ -50,5 +51,16 @@ public abstract class Unidad {
      */
     public void destruir(){
         alive = false;
+    }
+
+    public void actualizar(){}
+    public void paint(Graphics2D g){}
+
+    public Rectangle getBounds() {
+        if (alive == true) {
+            return new Rectangle(posX, posY, LADOSPRITE, LADOSPRITE);
+        }else{
+            return new Rectangle(posX,posY,0,0);
+        }
     }
 }

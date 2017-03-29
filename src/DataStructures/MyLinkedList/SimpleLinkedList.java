@@ -53,6 +53,10 @@ public class SimpleLinkedList extends AbstractLinkedList {
         length -= 1;
     }
 
+    public Node getHead(){
+        return head;
+    }
+
     @Override
     public void swap(int position1, int position2){
 
