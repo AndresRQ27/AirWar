@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves">
+    <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -548,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490823153525</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves">
+      <created>1490823190228</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1490823190228</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
