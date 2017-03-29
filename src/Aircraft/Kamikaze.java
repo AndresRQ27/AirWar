@@ -1,6 +1,7 @@
-package Enemigos;
+package Aircraft;
 
 import Aircraft.Unidad;
+import DataStructures.MyLinkedList.Node;
 import Jugador.Player;
 import Main.Game;
 
@@ -50,6 +51,9 @@ public class Kamikaze extends Unidad {
          * Los 2 primeros if son para que el kamikaze siga la posicion del jugador
          * el tercer if lo que hace es que si se pasa del margen de la pantalla la destruye
          */
+        if (collision() == true){
+            destruir();
+        }
         if (posX + movilidadX < player.posX){
             movilidadX = 3;
         }
@@ -60,6 +64,7 @@ public class Kamikaze extends Unidad {
         if (posY + movilidadY > game.getHeight()){
             destruir();
         }
+
         /**
          * Aca es donde va asignando el movimiento
          */
@@ -75,10 +80,25 @@ public class Kamikaze extends Unidad {
         if (alive == true){
             g.drawImage(sprite, posX, posY, null);
         }else{
-            g.dispose();
         }
     }
-    public Rectangle getBounds() {
-        return new Rectangle(posX, posY, LADOSPRITE, LADOSPRITE);
+
+    private boolean collision() {
+        boolean aux = false;
+
+        if (player.projectiles != null) {
+            Node<Projectile> current = player.projectiles.getHead();
+            while (current != null) {
+                if (current.getObject().getBounds().intersects(getBounds())) {
+                    aux = true;
+                    break;
+                }
+                current = current.getNext();
+            }
+            if (player.getBounds().intersects(getBounds())){
+                aux = true;
+            }
+        }
+        return aux;
     }
 }
