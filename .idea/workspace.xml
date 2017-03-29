@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Enemigos/Kamikaze.java" afterPath="" />
+    <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Unidad.java" afterPath="$PROJECT_DIR$/src/Aircraft/Unidad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/SimpleLinkedList.java" afterPath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/SimpleLinkedList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Jugador/Player.java" afterPath="$PROJECT_DIR$/src/Jugador/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Game.java" afterPath="$PROJECT_DIR$/src/Main/Game.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -546,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490643158752</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves">
+      <created>1490823153525</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1490823153525</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
