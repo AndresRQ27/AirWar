@@ -13,7 +13,7 @@ public class Bala extends Unidad {
     //Constructor
     public Bala(int x, int y, Game game) {
         this.game = game;
-        loadImage("C:\\Users\\pedro\\Desktop\\bala.jpg");
+        BufferImage("/bala.png");
         loadDimension();
         this.x = x+width;
         this.y = y-height;

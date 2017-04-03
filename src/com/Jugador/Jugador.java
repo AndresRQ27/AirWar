@@ -19,8 +19,7 @@ public class Jugador extends Unidad {
     //constructor
     public Jugador(String nombre, Game game) {
         this.game = game;
-        loadImage("C:\\Users\\pedro\\Desktop\\craft.png");
-        loadDimension();
+        this.BufferImage("/player.png");
         this.nombre = nombre;
         this.x = 250; this.Ix = x;
         this.y = 200; this.Iy = y;

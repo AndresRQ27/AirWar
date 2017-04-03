@@ -9,7 +9,7 @@ import com.Unidad.Unidad;
 public class Vida extends Unidad{
     public Vida(Game game, int x) {
         this.game = game;
-        loadImage("C:\\Users\\pedro\\Desktop\\vida.png");
+        this.BufferImage("/vida.png");
         loadDimension();
         this.x = x;
         this.y = 0;
