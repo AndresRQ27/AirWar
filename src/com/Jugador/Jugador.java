@@ -13,13 +13,14 @@ import java.util.ArrayList;
 public class Jugador extends Unidad {
     private String nombre;
     public int Ix, Iy, puntaje, maxNivel, tempJugado;
-    private ArrayList municiones;
+    private ArrayList <Bala> municiones;
     //Pila de Power Ups
 
     //constructor
     public Jugador(String nombre, Game game) {
         this.game = game;
         this.BufferImage("/player.png");
+        this.loadDimension();
         this.nombre = nombre;
         this.x = 250; this.Ix = x;
         this.y = 200; this.Iy = y;
@@ -33,13 +34,11 @@ public class Jugador extends Unidad {
     public void move() {
         if(x + xa > 0 && x + xa < game.getWidth()-width){
             x += xa;
-        }else{
-            xa = 0;
-        }if( y + ya > 0 && y + ya < game.getHeight()-height){
+        }
+        if( y + ya > 0 && y + ya < game.getHeight()-height){
             y += ya;
-        }else{
-            ya = 0;
-        }if(collisionEnemigo()){
+        }
+        if(collisionEnemigo()){
             this.resistencia --;
             x= Ix;
             y= Iy;
