@@ -17,7 +17,7 @@ public class Jugador extends Unidad {
     private String nombre;
     public int Ix, Iy, puntaje, maxNivel, tempJugado;
     private SimpleLinkedList municiones;
-    //Pila de Power Ups
+    private SimpleLinkedList powerUps;
 
     //constructor
     public Jugador(String nombre, Game game) {
