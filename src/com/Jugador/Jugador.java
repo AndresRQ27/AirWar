@@ -3,6 +3,7 @@ package com.Jugador;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Game.Game;
 import com.Municiones.Bala;
+import com.PowerUps.PowerUps;
 import com.ProjectileFactory.ProjectileFactory;
 import com.Unidad.Unidad;
 
@@ -57,6 +58,9 @@ public class Jugador extends Unidad {
         }    }
     public boolean collisionEnemigo(){
         return false;
+    }
+    public void guardarPower(PowerUps power){
+        this.powerUps.addFirst(power);
     }
 
     //Eventos del teclado
