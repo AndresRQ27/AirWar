@@ -51,19 +51,20 @@ public class Kamikaze extends Unidad {
 
     private boolean collision() {
         boolean aux = false;
-
+        if (game.J1.getBounds().intersects(getBounds())){
+            aux = true;
+            game.J1.muerte();
+        }
         if (game.J1.getMuniciones() != null) {
             Node<Projectile> current = game.J1.getMuniciones().getHead();
             while (current != null) {
                 if (current.getObject().getBounds().intersects(getBounds())) {
                     aux = true;
                     current.getObject().destruir();
+                    game.J1.puntaje ++;
                     break;
                 }
                 current = current.getNext();
-            }
-            if (game.J1.getBounds().intersects(getBounds())){
-                aux = true;
             }
         }
         return aux;

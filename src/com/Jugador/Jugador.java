@@ -1,5 +1,6 @@
 package com.Jugador;
 
+import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Game.Game;
 import com.Municiones.Bala;
@@ -42,11 +43,6 @@ public class Jugador extends Unidad {
         if( y + ya > 0 && y + ya < game.getHeight()-height){
             y += ya;
         }
-        if(collisionEnemigo()){
-            this.resistencia --;
-            x= Ix;
-            y= Iy;
-        }
     }
     //.
 
@@ -55,9 +51,26 @@ public class Jugador extends Unidad {
             municiones.addFirst(ProjectileFactory.getProjectilev(1,this.x,this.y,this.game));
         } catch (Exception e) {
             e.printStackTrace();
-        }    }
-    public boolean collisionEnemigo(){
-        return false;
+        }
+    }
+
+    /*public boolean collisionEnemigo(){
+        boolean aux = false;
+        if (game.enemigos != null) {
+            Node<Unidad> current = game.enemigos.getHead();
+            while (current != null) {
+                if (current.getObject().getBounds().intersects(this.getBounds())) {
+                    aux = true;
+                }
+                current = current.getNext();
+            }
+        }
+        return aux;
+    }*/
+    public void muerte(){
+        this.x = Ix;
+        this.y = Iy;
+        this.resistencia --;
     }
     public void guardarPower(PowerUps power){
         this.powerUps.addFirst(power);

@@ -77,6 +77,7 @@ public class Game  extends JPanel {
 
     //Se encarga de mover todos los sprites en la pantalla
     public void move(){
+
         J1.move();
 
         int indexEne = 0;
