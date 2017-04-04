@@ -10,9 +10,9 @@ public class ProjectileFactory{
         if (type == 1){
             return new BalaJugador(game,x,y);
         }else if (type == 2){
-            return new BalaJugador(game,x,y);
+            return new MisileJugador(game,x,y);
         }else if (type == 3){
-            return new BalaJugador(game,x,y);
+            return new LaserJugador(game,x,y);
         }else{
             throw new Exception("Unknow Projectile Type");
         }

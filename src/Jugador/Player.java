@@ -26,7 +26,7 @@ public class Player extends Unidad{
         this.posY = 500;
         this.alive = true;
         this.vidas = 3;
-        this.municion = 1;
+        this.municion = 3;
         this.projectiles = new SimpleLinkedList();
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
@@ -109,7 +109,7 @@ public class Player extends Unidad{
     @Override
     public void shoot() {
         try {
-            projectiles.addFirst(ProjectileFactory.getProjectilev(municion,this.game,this.posX,this.posY));
+            projectiles.addFirst(ProjectileFactory.getProjectilev(municion, this.game, this.posX, this.posY));
         } catch (Exception e) {
             e.printStackTrace();
         }
