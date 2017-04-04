@@ -6,6 +6,7 @@ import com.Municiones.Bala;
 import com.Unidad.Unidad;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -92,6 +93,7 @@ public class Jugador extends Unidad {
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             this.fire();
+
         }
     }
     //.
