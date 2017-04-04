@@ -5,6 +5,7 @@ import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Jugador.Jugador;
 import com.Jugador.Vidas.Vida;
 import com.Municiones.Bala;
+import com.ProjectileFactory.Projectile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,7 +55,7 @@ public class Game  extends JPanel {
          */
         SimpleLinkedList municiones = J1.getMuniciones();
         if (municiones != null){
-            Node<Bala> current = municiones.getHead();
+            Node<Projectile> current = municiones.getHead();
             while (current != null){
                 g2d.drawImage(current.getObject().sprite,current.getObject().x,current.getObject().y,this);
                 current = current.getNext();
@@ -70,10 +71,10 @@ public class Game  extends JPanel {
         SimpleLinkedList municiones = J1.getMuniciones();
         int index = 0;
         if (municiones != null){
-            Node <Bala> current = municiones.getHead();
+            Node <Projectile> current = municiones.getHead();
             while (current != null){
                 current.getObject().move();
-                if (current.getObject().isVis()){
+                if (current.getObject().isAlive()){
                     index++;
                 }else{
                     municiones.removeInPosition(index);

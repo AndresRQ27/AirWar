@@ -3,6 +3,7 @@ package com.Jugador;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Game.Game;
 import com.Municiones.Bala;
+import com.ProjectileFactory.ProjectileFactory;
 import com.Unidad.Unidad;
 
 import java.awt.event.KeyEvent;
@@ -50,7 +51,7 @@ public class Jugador extends Unidad {
 
     public void fire(){
         try {
-            municiones.addFirst(new Bala(this.x, this.y, this.game));
+            municiones.addFirst(ProjectileFactory.getProjectilev(1,this.x,this.y,this.game));
         } catch (Exception e) {
             e.printStackTrace();
         }    }
