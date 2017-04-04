@@ -4,28 +4,37 @@ import DataStructures.MyLinkedList.Node;
 import Main.Game;
 import Unidad.Unidad;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * Created by Cristian44 on 27/3/2017.
  */
 public abstract class Projectile {
-    public int posX;
-    public int posY;
+    public int x, y, speed = 3;
     public int ataque;
     public BufferedImage sprite;
-    public int movilidadY;
-    public boolean alive;
+    public boolean alive = true;
     public Game game;
     public int width;
     public int height;
 
-    public void mover() {
-        if (posY + movilidadY > game.getHeight()) {
-            destruir();
+    abstract public void move();
+
+    //Método para cargar la imagen
+    public void BufferImage(String imagen){
+        try {
+            sprite = ImageIO.read(getClass().getResourceAsStream(imagen));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        posY += movilidadY;
+    }
+    //Método para cargar el width(ancho) heigh(largo) de la imagen
+    public void loadDimension(){
+        width = sprite.getWidth(null);
+        height = sprite.getHeight(null);
     }
 
     public void destruir() {
@@ -34,13 +43,12 @@ public abstract class Projectile {
 
     public void paint(Graphics2D g) {
         if (alive == true) {
-            g.drawImage(sprite, posX, posY, null);
-        } else {
+            g.drawImage(sprite, this.x, this.y, null);
         }
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(posX, posY, width, height);
+        return new Rectangle(this.x, this.y, width, height);
     }
 
     public boolean collision() {

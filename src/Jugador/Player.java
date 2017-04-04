@@ -55,7 +55,7 @@ public class Player extends Unidad{
         if (projectiles != null){
             Node <Projectile> current = projectiles.getHead();
             while (current != null){
-                current.getObject().mover();
+                current.getObject().move();
                 if (current.getObject().alive == true){
                     index++;
                 }else{
@@ -109,7 +109,7 @@ public class Player extends Unidad{
     @Override
     public void shoot() {
         try {
-            projectiles.addFirst(ProjectileFactory.getProjectilev(municion,game,this,posX+16,posY));
+            projectiles.addFirst(ProjectileFactory.getProjectilev(municion,this.game,this.posX,this.posY));
         } catch (Exception e) {
             e.printStackTrace();
         }
