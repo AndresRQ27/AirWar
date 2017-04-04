@@ -1,9 +1,8 @@
 package Jugador;
 
-import Aircraft.BalaJugador;
-import Aircraft.Projectile;
-import Aircraft.ProjectileFactory;
-import Aircraft.Unidad;
+import ProjectileFactory.Projectile;
+import ProjectileFactory.ProjectileFactory;
+import Unidad.Unidad;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import Main.Game;

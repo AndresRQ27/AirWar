@@ -1,8 +1,7 @@
-package Aircraft;
+package ProjectileFactory;
 
 import Jugador.Player;
 import Main.Game;
-import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
 
 /**
  * Created by Cristian44 on 28/3/2017.

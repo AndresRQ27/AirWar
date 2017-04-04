@@ -1,6 +1,5 @@
-package Aircraft;
+package ProjectileFactory;
 
-import DataStructures.MyLinkedList.Node;
 import Jugador.Player;
 import Main.Game;
 
