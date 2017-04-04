@@ -54,10 +54,10 @@ public abstract class Projectile {
         return new Rectangle(this.x, this.y, width, height);
     }
 
-   /* public boolean collision() {
+    public boolean collision() {
         boolean aux = false;
-        if (game.enemigosPantalla != null) {
-            Node<Unidad> current = game.enemigosPantalla.getHead();
+        if (game.enemigos != null) {
+            Node<Unidad> current = game.enemigos.getHead();
             while (current != null) {
                 if (current.getObject().getBounds().intersects(this.getBounds())) {
                     aux = true;
@@ -66,7 +66,7 @@ public abstract class Projectile {
             }
         }
         return aux;
-    }*/
+    }
 
     public boolean isAlive() {
         return alive;

@@ -2,6 +2,7 @@ package com.Game;
 
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
+import com.Enemigos.Kamikaze;
 import com.Jugador.Jugador;
 import com.Jugador.Vidas.Vida;
 import com.Municiones.Bala;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
  */
 public class Game  extends JPanel {
     public Jugador J1;
+    public SimpleLinkedList enemigos = new SimpleLinkedList();
     Vida v1 = new Vida(this, 5), v2 = new Vida(this,v1.x+v1.width+5),v3 = new Vida(this, v2.x+ v2.width+5);
 
     public Game(String nombre) {
@@ -26,6 +28,7 @@ public class Game  extends JPanel {
         setBackground(Color.BLACK);
         setFocusable(true);
         J1 = new Jugador(nombre, this);
+        enemigos.addLast(new Kamikaze(this,20,0));
 
     }
 
@@ -49,6 +52,14 @@ public class Game  extends JPanel {
         }
         g2d.drawString("Score: "+Integer.toString(J1.puntaje),495,20);//Grafica el puntaje
 
+        if (enemigos != null){
+            Node<Kamikaze> current = enemigos.getHead();
+            while (current != null){
+                g2d.drawImage(current.getObject().sprite,current.getObject().x,current.getObject().y,this);
+                current = current.getNext();
+            }
+        }
+
         /**
          * Si hay balas en el arreglo de municiones del jugador
          * las grafica cuando las dispara
@@ -68,16 +79,30 @@ public class Game  extends JPanel {
     public void move(){
         J1.move();
 
+        int indexEne = 0;
+        if (enemigos != null){
+            Node <Kamikaze> current = enemigos.getHead();
+            while (current != null){
+                current.getObject().move();
+                if (current.getObject().isVis()){
+                    indexEne++;
+                }else{
+                    enemigos.removeInPosition(indexEne);
+                }
+                current = current.getNext();
+            }
+        }
+
         SimpleLinkedList municiones = J1.getMuniciones();
-        int index = 0;
+        int indexMuni = 0;
         if (municiones != null){
             Node <Projectile> current = municiones.getHead();
             while (current != null){
                 current.getObject().move();
                 if (current.getObject().isAlive()){
-                    index++;
+                    indexMuni++;
                 }else{
-                    municiones.removeInPosition(index);
+                    municiones.removeInPosition(indexMuni);
                 }
                 current = current.getNext();
             }
