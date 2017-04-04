@@ -1,5 +1,7 @@
 package com.Game;
 
+import DataStructures.MyLinkedList.Node;
+import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Jugador.Jugador;
 import com.Jugador.Vidas.Vida;
 import com.Municiones.Bala;
@@ -50,10 +52,13 @@ public class Game  extends JPanel {
          * Si hay balas en el arreglo de municiones del jugador
          * las grafica cuando las dispara
          */
-        ArrayList municiones = J1.getMuniciones();
-        for (Object mun : municiones){
-            Bala m = (Bala) mun;
-            g2d.drawImage(m.sprite,m.x,m.y, this);
+        SimpleLinkedList municiones = J1.getMuniciones();
+        if (municiones != null){
+            Node<Bala> current = municiones.getHead();
+            while (current != null){
+                g2d.drawImage(current.getObject().sprite,current.getObject().x,current.getObject().y,this);
+                current = current.getNext();
+            }
         }
         //.
     }
@@ -62,13 +67,18 @@ public class Game  extends JPanel {
     public void move(){
         J1.move();
 
-        ArrayList municiones = J1.getMuniciones();
-        for (int i = 0; i < municiones.size(); i++) {
-            Bala m = (Bala) municiones.get(i);
-            if (m.isVis()) {
-                m.move();
-            } else {
-                municiones.remove(i);
+        SimpleLinkedList municiones = J1.getMuniciones();
+        int index = 0;
+        if (municiones != null){
+            Node <Bala> current = municiones.getHead();
+            while (current != null){
+                current.getObject().move();
+                if (current.getObject().isVis()){
+                    index++;
+                }else{
+                    municiones.removeInPosition(index);
+                }
+                current = current.getNext();
             }
         }
 

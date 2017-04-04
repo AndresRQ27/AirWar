@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/DataStructures/MyLinkedList/AbstractLinkedList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/DataStructures/MyLinkedList/Node.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/DataStructures/MyLinkedList/SimpleLinkedList.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Game/Game.java" afterPath="$PROJECT_DIR$/src/com/Game/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Jugador/Jugador.java" afterPath="$PROJECT_DIR$/src/com/Jugador/Jugador.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,21 +22,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Jugador.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Jugador.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/Jugador/Jugador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="233">
+              <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+              <folding>
+                <element signature="e#2318#2319#0" expanded="true" />
+                <element signature="e#2351#2352#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Game/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="55" column="34" lean-forward="false" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+            <state relative-caret-position="282">
+              <caret line="78" column="30" lean-forward="false" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -84,11 +91,11 @@
         <option value="$PROJECT_DIR$/src/pruebagitjaja/dd.java" />
         <option value="$PROJECT_DIR$/src/pruebagitjaja/Solobranchpedro.java" />
         <option value="$PROJECT_DIR$/src/Aircraft/Unidad.java" />
-        <option value="$PROJECT_DIR$/src/com/Game/Game.java" />
         <option value="$PROJECT_DIR$/src/com/Jugador/Vidas/Vida.java" />
         <option value="$PROJECT_DIR$/src/com/Municiones/Bala.java" />
         <option value="$PROJECT_DIR$/src/com/Unidad/Unidad.java" />
         <option value="$PROJECT_DIR$/src/com/Jugador/Jugador.java" />
+        <option value="$PROJECT_DIR$/src/com/Game/Game.java" />
       </list>
     </option>
   </component>
@@ -125,6 +132,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AirWar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AirWar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AirWar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -221,6 +242,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../AirWar - CopyPedro" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Game (1)">
     <configuration default="false" name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -576,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491182380529</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="loadDimensions">
+      <created>1491263688407</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1491263688407</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -659,7 +692,8 @@
     <MESSAGE value="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves" />
     <MESSAGE value="Prueba de git mia jaja a ver si funciona esta vara" />
     <MESSAGE value="Arreglo al cargar las imagenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglo al cargar las imagenes" />
+    <MESSAGE value="loadDimensions" />
+    <option name="LAST_COMMIT_MESSAGE" value="loadDimensions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -975,18 +1009,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Game/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/com/Jugador/Jugador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="55" column="34" lean-forward="false" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="233">
+          <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+          <folding>
+            <element signature="e#2318#2319#0" expanded="true" />
+            <element signature="e#2351#2352#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Jugador/Jugador.java">
+    <entry file="file://$PROJECT_DIR$/src/com/Game/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+        <state relative-caret-position="282">
+          <caret line="78" column="30" lean-forward="false" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
           <folding />
         </state>
       </provider>

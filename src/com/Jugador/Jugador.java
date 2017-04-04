@@ -1,5 +1,6 @@
 package com.Jugador;
 
+import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Game.Game;
 import com.Municiones.Bala;
 import com.Unidad.Unidad;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Jugador extends Unidad {
     private String nombre;
     public int Ix, Iy, puntaje, maxNivel, tempJugado;
-    private ArrayList <Bala> municiones;
+    private SimpleLinkedList municiones;
     //Pila de Power Ups
 
     //constructor
@@ -26,7 +27,7 @@ public class Jugador extends Unidad {
         this.y = 200; this.Iy = y;
         this.puntaje= 0;
         this.resistencia = 3;
-        this.municiones = new ArrayList();
+        this.municiones = new SimpleLinkedList();
 
     }
 
@@ -47,8 +48,11 @@ public class Jugador extends Unidad {
     //.
 
     public void fire(){
-        municiones.add(new Bala(this.x, this.y, this.game));
-    }
+        try {
+            municiones.addFirst(new Bala(this.x, this.y, this.game));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    }
     public boolean collisionEnemigo(){
         return false;
     }
@@ -93,7 +97,7 @@ public class Jugador extends Unidad {
     //.
 
     //Getters
-    public ArrayList getMuniciones() {
+    public SimpleLinkedList getMuniciones() {
         return municiones;
     }
     public int getX() {
