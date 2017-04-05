@@ -24,7 +24,7 @@ public class Kamikaze extends Unidad {
         this.ya = 1;
         this.resistencia = 2;
         try {
-            power = PowerUpsFactory.getPower("Escudo",game);
+            power = PowerUpsFactory.getPower("Misile",game);
         }catch (Exception e){
             System.out.print(e);
         }

@@ -14,16 +14,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by pedro on 27/3/2017.
+ * Clase Jugador, hereda de la clase Unidad
+ *@see com.Unidad.Unidad
+ * Tiene todos las funciones del jugador
+ * @author created by pedro on 27/3/2017.
  */
 public class Jugador extends Unidad {
-    private String nombre;
-    public int Ix, Iy, puntaje, maxNivel, tempJugado;
-    private SimpleLinkedList municiones;
-    private SimpleLinkedList powerUps;
-    public int municion = 1;
+    private String nombre;//nombre del jugador
+    public int Ix, Iy, puntaje, maxNivel, tempJugado;//Ix,Iy = posiciones iniciales del jugador; maximo nivel; tiempo jugado
+    private SimpleLinkedList municiones;// Lista enlazada que contiene las municiones del jugador
+    private SimpleLinkedList powerUps;//Lista enlazada que contiene los power Ups del juego
+    public int municion = 1;//tipo de munición 1(Bala) 2(misil) 3(laser)
 
-    //constructor
+    /**
+     *Constructor Jugador
+     * @param nombre, es nombre del jugador
+     * @param game, es la clase sobre la cual va a funcionar el jugador
+     */
     public Jugador(String nombre, Game game) {
         this.game = game;
         this.BufferImage("/player.png");
@@ -39,6 +46,10 @@ public class Jugador extends Unidad {
 
     }
 
+    /**
+     * Método move()
+     * Se fija si el jugador está dentro de los bordes de la pantalla y suma xa y ya en "x" y en "y" respectivamente
+     */
     @Override
     public void move() {
         if(x + xa > 0 && x + xa < game.getWidth()-width){
@@ -48,9 +59,12 @@ public class Jugador extends Unidad {
             y += ya;
         }
     }
-    //.
 
-    public void fire(){
+    /**
+     * método fire()
+     * Se encarga de agregar las municiones de cualquier tipo a la lista municiones
+     */
+    private void fire(){
         try {
             municiones.addFirst(ProjectileFactory.getProjectilev(municion,this.x,this.y,this.game));
         } catch (Exception e) {
@@ -58,19 +72,12 @@ public class Jugador extends Unidad {
         }
     }
 
-    /*public boolean collisionEnemigo(){
-        boolean aux = false;
-        if (game.enemigos != null) {
-            Node<Unidad> current = game.enemigos.getHead();
-            while (current != null) {
-                if (current.getObject().getBounds().intersects(this.getBounds())) {
-                    aux = true;
-                }
-                current = current.getNext();
-            }
-        }
-        return aux;
-    }*/
+    /**
+     * Muerte()
+     * Disminuye la resistencia cada que es golpeado y lo manda donde empezó
+     * si la resistencia es menor que 0 se le rebaja una vida
+     * @see com.Enemigos.Kamikaze
+     */
     public void muerte(){
         this.resistencia --;
         this.x = Ix;
@@ -80,11 +87,22 @@ public class Jugador extends Unidad {
             resistencia = 0;
         }
     }
+
+    /**
+     * Método guardarPower()
+     * Agrega los poderes obtenidos en el juego a la lista powerUps
+     * @param power tipo PowerUps, es el poder que se va agregar
+     * @see com.Enemigos.Kamikaze
+     */
     public void guardarPower(PowerUps power){
         this.powerUps.addFirst(power);
     }
 
-    //Eventos del teclado
+    /**
+     *Método keyReleased()
+     * se encarga de manejar los acciones que ocurren cuando se suelta una tecla
+     * @param e tipo KeyEvent, es el evento del teclado, identifica de que tecla proviene
+     */
     public void  keyReleased(KeyEvent e){
         int key = e.getKeyCode();
 
@@ -104,6 +122,13 @@ public class Jugador extends Unidad {
             ya = 0;
         }
     }
+
+    /**
+     * Método keyPressed()
+     * se encarga de manejar los acciones que ocurren cuando se apreta una tecla
+     * cuando la tecla es v, se utiliza el primer poder que hay en la pila de poderes
+     * @param e tipo KeyEvent, es el evento del teclado, identifica de que tecla proviene
+     */
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
             xa = -3;
@@ -134,19 +159,17 @@ public class Jugador extends Unidad {
         }
 
     }
-    //.
 
-    //Getters
+    /**
+     * getMuniciones()
+     * @return municiones, tipo SimpleLinkedList; la lista enlazada municiones
+     */
     public SimpleLinkedList getMuniciones() {
         return municiones;
     }
 
-    public SimpleLinkedList getPowerUps() {
-        return powerUps;
-    }
-
-    public int getX() {
-        return this.x;
-    }
-    //.
+    /**
+     * getX
+     * @return
+     */
 }
