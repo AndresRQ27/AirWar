@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public abstract class Unidad {
     public int x, y, xa, ya, width, height;
-    public int resistencia;
+    public int resistencia,vida;
     public Game game;
     public BufferedImage sprite;
     public boolean vis = true;

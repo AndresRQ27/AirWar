@@ -32,7 +32,8 @@ public class Jugador extends Unidad {
         this.x = 250; this.Ix = x;
         this.y = 200; this.Iy = y;
         this.puntaje= 0;
-        this.resistencia = 3;
+        this.resistencia = 0;
+        this.vida = 3;
         this.powerUps = new SimpleLinkedList();
         this.municiones = new SimpleLinkedList();
 
@@ -71,9 +72,13 @@ public class Jugador extends Unidad {
         return aux;
     }*/
     public void muerte(){
+        this.resistencia --;
         this.x = Ix;
         this.y = Iy;
-        this.resistencia --;
+        if (resistencia<0) {
+            this.vida--;
+            resistencia = 0;
+        }
     }
     public void guardarPower(PowerUps power){
         this.powerUps.addFirst(power);

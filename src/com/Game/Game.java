@@ -41,14 +41,14 @@ public class Game  extends JPanel {
         g2d.setFont(new Font("Serif",Font.BOLD,20));
 
         g2d.drawImage(J1.sprite,J1.x, J1.y, this);//Grafica Jugador
-        if(J1.resistencia>=3) {
+        if(J1.vida>=3) {
             g2d.drawImage(v1.sprite, v1.x, v1.y, this);
             g2d.drawImage(v2.sprite, v2.x, v2.y, this);//Grafica 3 vida
             g2d.drawImage(v3.sprite, v3.x, v3.y, this);
-        }else if(J1.resistencia == 2){
+        }else if(J1.vida == 2){
             g2d.drawImage(v1.sprite, v1.x, v1.y, this);//Grafica 2 vidas
             g2d.drawImage(v2.sprite, v2.x, v2.y, this);
-        }else if(J1.resistencia == 1){
+        }else if(J1.vida == 1){
             g2d.drawImage(v1.sprite, v1.x, v1.y, this);//Grafica 1 vida
         }
         g2d.drawString("Score: "+Integer.toString(J1.puntaje),495,20);//Grafica el puntaje
