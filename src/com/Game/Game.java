@@ -51,7 +51,9 @@ public class Game  extends JPanel {
             g2d.drawImage(v1.sprite, v1.x, v1.y, this);//Grafica 1 vida
         }
         g2d.drawString("Score: "+Integer.toString(J1.puntaje),495,20);//Grafica el puntaje
-
+        /**
+         * Grafica a los enemigos
+         */
         if (enemigos != null){
             Node<Kamikaze> current = enemigos.getHead();
             while (current != null){
@@ -59,7 +61,6 @@ public class Game  extends JPanel {
                 current = current.getNext();
             }
         }
-
         /**
          * Si hay balas en el arreglo de municiones del jugador
          * las grafica cuando las dispara

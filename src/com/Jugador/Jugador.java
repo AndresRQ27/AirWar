@@ -2,6 +2,7 @@ package com.Jugador;
 
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
+import com.Enemigos.Kamikaze;
 import com.Game.Game;
 import com.Municiones.Bala;
 import com.PowerUps.PowerUps;
@@ -31,6 +32,7 @@ public class Jugador extends Unidad {
         this.y = 200; this.Iy = y;
         this.puntaje= 0;
         this.resistencia = 3;
+        this.powerUps = new SimpleLinkedList();
         this.municiones = new SimpleLinkedList();
 
     }
@@ -111,8 +113,18 @@ public class Jugador extends Unidad {
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             this.fire();
-
         }
+        if(e.getKeyCode() == KeyEvent.VK_V){
+            if (powerUps != null){
+                Node <PowerUps> current = powerUps.getHead();
+                current.getObject().UsarPoder();
+                powerUps.removeFirst();
+                System.out.print(powerUps.getHead());
+            }else{
+                System.out.print("notiene poderes");
+            }
+        }
+
     }
     //.
 
