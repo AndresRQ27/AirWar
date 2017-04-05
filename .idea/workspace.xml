@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Enemigos/Kamikaze.java" afterPath="$PROJECT_DIR$/src/com/Enemigos/Kamikaze.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/PowerUps/Laser.java" afterPath="$PROJECT_DIR$/src/com/PowerUps/Laser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ProjectileFactory/LaserJugador.java" afterPath="$PROJECT_DIR$/src/com/ProjectileFactory/LaserJugador.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -850,7 +847,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491358384393</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="El kamikaze muere cuando la resitencia baje a 0, se le descuenta el ataque de la bala">
+      <created>1491360445053</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1491360445053</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -910,7 +914,8 @@
     <MESSAGE value="destruye el kamikaze, me devuelve al inicio cuando me toca al jugador y me baja vidas y sumo punto cuando lo mato" />
     <MESSAGE value="cuando el kamikaze se destruye se convierte en un power up y el jugador lo puede agarrar, se guardan en una lista, si se estripa V puedo usar el poder" />
     <MESSAGE value="Funciona con todos los poderes, por ahora escudo inrementa la resistencia(tengo q cambiar eso), misile cambia la imagen de la bala pero para siempre, laser hace lo mismo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Funciona con todos los poderes, por ahora escudo inrementa la resistencia(tengo q cambiar eso), misile cambia la imagen de la bala pero para siempre, laser hace lo mismo" />
+    <MESSAGE value="El kamikaze muere cuando la resitencia baje a 0, se le descuenta el ataque de la bala" />
+    <option name="LAST_COMMIT_MESSAGE" value="El kamikaze muere cuando la resitencia baje a 0, se le descuenta el ataque de la bala" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
