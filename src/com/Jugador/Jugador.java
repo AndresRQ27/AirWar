@@ -115,7 +115,7 @@ public class Jugador extends Unidad {
             this.fire();
         }
         if(e.getKeyCode() == KeyEvent.VK_V){
-            if (powerUps != null){
+            if (powerUps.getHead() != null){
                 Node <PowerUps> current = powerUps.getHead();
                 current.getObject().UsarPoder();
                 powerUps.removeFirst();
@@ -123,6 +123,8 @@ public class Jugador extends Unidad {
             }else{
                 System.out.print("notiene poderes");
             }
+        }if(e.getKeyCode() == KeyEvent.VK_M){
+            game.enemigos.addLast(new Kamikaze(game,20,20));
         }
 
     }
