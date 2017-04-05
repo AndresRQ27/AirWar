@@ -6,6 +6,7 @@ import com.Enemigos.Kamikaze;
 import com.Jugador.Jugador;
 import com.Jugador.Vidas.Vida;
 import com.Municiones.Bala;
+import com.PowerUps.PowerUps;
 import com.ProjectileFactory.Projectile;
 
 import javax.swing.*;

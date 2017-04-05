@@ -21,6 +21,7 @@ public class Jugador extends Unidad {
     public int Ix, Iy, puntaje, maxNivel, tempJugado;
     private SimpleLinkedList municiones;
     private SimpleLinkedList powerUps;
+    public int municion = 1;
 
     //constructor
     public Jugador(String nombre, Game game) {
@@ -50,7 +51,7 @@ public class Jugador extends Unidad {
 
     public void fire(){
         try {
-            municiones.addFirst(ProjectileFactory.getProjectilev(1,this.x,this.y,this.game));
+            municiones.addFirst(ProjectileFactory.getProjectilev(municion,this.x,this.y,this.game));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,6 +135,11 @@ public class Jugador extends Unidad {
     public SimpleLinkedList getMuniciones() {
         return municiones;
     }
+
+    public SimpleLinkedList getPowerUps() {
+        return powerUps;
+    }
+
     public int getX() {
         return this.x;
     }

@@ -18,12 +18,9 @@ public class MisileJugador extends Projectile {
     }
     @Override
     public void move(){
-        /*this.y -= speed;
-        if (collision()){
-            destruir();
-        }*/
         if (this.y - speed < 0){
             destruir();
         }
+        this.y -= speed;
     }
 }
