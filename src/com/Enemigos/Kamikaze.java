@@ -7,8 +7,6 @@ import com.PowerUps.PowerUpsFactory;
 import com.ProjectileFactory.Projectile;
 import com.Unidad.Unidad;
 
-import java.awt.*;
-
 /**
  * Created by Cristian44 on 23/3/2017.
  */
@@ -24,6 +22,7 @@ public class Kamikaze extends Unidad {
         this.y = y;
         this.xa = 1;
         this.ya = 1;
+        this.resistencia = 2;
         try {
             power = PowerUpsFactory.getPower("Laser",game);
         }catch (Exception e){
@@ -38,10 +37,12 @@ public class Kamikaze extends Unidad {
          * el tercer if lo que hace es que si se pasa del margen de la pantalla la destruye
          */
         if (collisionBala()){
-            BufferImage("/vida.png");
-            loadDimension();
-            malo = false;
-            xa=0;
+            if(resistencia ==0) {
+                BufferImage("/vida.png");
+                loadDimension();
+                malo = false;
+                xa = 0;
+            }
         }
         if(collisionJugador()){
             this.vis = false;
@@ -51,10 +52,10 @@ public class Kamikaze extends Unidad {
                 game.J1.muerte();
             }
         }
-        if (this.x + xa <= game.J1.x && malo){
+        if (this.x + xa < game.J1.x && malo){
             xa = 3;
         }
-        if (this.x + xa >= game.J1.x && malo){
+        if (this.x + xa > game.J1.x && malo){
             xa = -3;
         }
         if (this.y + this.ya > game.getHeight()){
@@ -85,6 +86,7 @@ public class Kamikaze extends Unidad {
                 if (current.getObject().getBounds().intersects(getBounds())) {
                     aux = true;
                     current.getObject().destruir();
+                    resistencia -= current.getObject().ataque;
                     game.J1.puntaje ++;
                     break;
                 }

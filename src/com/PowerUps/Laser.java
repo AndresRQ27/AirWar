@@ -1,6 +1,8 @@
 package com.PowerUps;
 
+import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Game.Game;
+import com.ProjectileFactory.ProjectileFactory;
 
 /**
  * Created by pedro on 17/3/2017.
@@ -11,8 +13,8 @@ public class Laser extends PowerUps {
         this.game=game;
     }
 
-    public void UsarPoder(){
+    public void UsarPoder() {
         System.out.println("Soy un láser");
-        this.game.J1.municion = 3;
+        game.J1.municion = 3;
     }
 }

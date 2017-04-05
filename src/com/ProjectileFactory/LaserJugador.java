@@ -22,6 +22,5 @@ public class LaserJugador extends Projectile {
             destruir();
         }
         this.y -= speed;
-
     }
 }
