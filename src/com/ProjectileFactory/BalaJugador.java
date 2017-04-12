@@ -16,11 +16,5 @@ public class BalaJugador extends Projectile {
         this.y = y-height;
         this.ataque = 1;
     }
-    @Override
-    public void move(){
-        if (this.y - speed < 0){
-            destruir();
-        }
-        this.y -= speed;
-    }
+
 }

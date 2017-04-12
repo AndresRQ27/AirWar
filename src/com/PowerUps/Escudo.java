@@ -3,8 +3,10 @@ package com.PowerUps;
 import com.Game.Game;
 
 /**
- * Created by pedro on 17/3/2017.
- * Poder
+ * Clase escudo
+ * es el poder escudo
+ * @see com.PowerUps.PowerUps
+ * @author by pedro on 17/3/2017.
  */
 public class Escudo extends PowerUps{
 

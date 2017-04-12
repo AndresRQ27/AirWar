@@ -24,7 +24,12 @@ public abstract class Projectile {
     public int width;
     public int height;
 
-    abstract public void move();
+    public void move(){
+        if (this.y - speed < 0){
+            destruir();
+        }
+        this.y -= speed;
+    }
 
     //Método para cargar la imagen
     public void BufferImage(String imagen){
@@ -44,29 +49,9 @@ public abstract class Projectile {
         alive = false;
     }
 
-    public void paint(Graphics2D g) {
-        if (alive == true) {
-            g.drawImage(sprite, this.x, this.y, null);
-        }
-    }
-
     public Rectangle getBounds() {
         return new Rectangle(this.x, this.y, width, height);
     }
-
-    /*public boolean collision() {
-        boolean aux = false;
-        if (game.enemigos != null) {
-            Node<Unidad> current = game.enemigos.getHead();
-            while (current != null) {
-                if (current.getObject().getBounds().intersects(this.getBounds())) {
-                    aux = true;
-                }
-                current = current.getNext();
-            }
-        }
-        return aux;
-    }*/
 
     public boolean isAlive() {
         return alive;

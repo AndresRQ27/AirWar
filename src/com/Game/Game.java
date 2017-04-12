@@ -5,15 +5,12 @@ import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Enemigos.Kamikaze;
 import com.Jugador.Jugador;
 import com.Jugador.Vidas.Vida;
-import com.Municiones.Bala;
-import com.PowerUps.PowerUps;
 import com.ProjectileFactory.Projectile;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
 
 /**
  * Created by pedro on 27/3/2017.
@@ -144,7 +141,7 @@ public class Game  extends JPanel {
         while (true){
             game.move();
             game.repaint();
-            Thread.sleep(10);
+            Thread.sleep(15);
         }
     }
     //.

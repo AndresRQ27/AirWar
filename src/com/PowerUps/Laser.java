@@ -5,8 +5,10 @@ import com.Game.Game;
 import com.ProjectileFactory.ProjectileFactory;
 
 /**
+ * Clase Laser
+ * es el poder Laser
+ * @see com.PowerUps.PowerUps
  * Created by pedro on 17/3/2017.
- * Poder
  */
 public class Laser extends PowerUps {
     public Laser(Game game) {

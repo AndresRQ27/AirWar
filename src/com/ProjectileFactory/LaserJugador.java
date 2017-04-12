@@ -4,6 +4,7 @@ package com.ProjectileFactory;
 import com.Game.Game;
 
 /**
+ *
  * Created by pedro on 4/4/2017.
  */
 public class LaserJugador extends Projectile {
@@ -15,12 +16,5 @@ public class LaserJugador extends Projectile {
         this.x = x+width;
         this.y = y-height;
         this.ataque = 1;//cambiar
-    }
-    @Override
-    public void move(){
-        if (this.y - speed < 0){
-            destruir();
-        }
-        this.y -= speed;
     }
 }

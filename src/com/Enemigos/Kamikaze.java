@@ -24,7 +24,7 @@ public class Kamikaze extends Unidad {
         this.ya = 1;
         this.resistencia = 2;
         try {
-            power = PowerUpsFactory.getPower("Misile",game);
+            power = PowerUpsFactory.getPower("Laser",game);
         }catch (Exception e){
             System.out.print(e);
         }
@@ -80,7 +80,7 @@ public class Kamikaze extends Unidad {
 
     private boolean collisionBala() {
         boolean aux = false;
-        if (game.J1.getMuniciones() != null) {
+        if (game.J1.getMuniciones() != null && malo) {
             Node<Projectile> current = game.J1.getMuniciones().getHead();
             while (current != null) {
                 if (current.getObject().getBounds().intersects(getBounds())) {

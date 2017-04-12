@@ -3,8 +3,9 @@ package com.PowerUps;
 import com.Game.Game;
 
 /**
+ * Clase abstracta PowerUps
+ * Clase de la que heredan el resto de poderes
  * Created by pedro on 17/3/2017.
- *Interfaz implementada en todos los poderes(misiles,laser,escudo)
  */
 public abstract class PowerUps {
     Game game;

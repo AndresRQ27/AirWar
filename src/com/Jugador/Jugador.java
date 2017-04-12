@@ -4,14 +4,11 @@ import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import com.Enemigos.Kamikaze;
 import com.Game.Game;
-import com.Municiones.Bala;
 import com.PowerUps.PowerUps;
 import com.ProjectileFactory.ProjectileFactory;
 import com.Unidad.Unidad;
 
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Clase Jugador, hereda de la clase Unidad
@@ -66,7 +63,7 @@ public class Jugador extends Unidad {
      */
     private void fire(){
         try {
-            municiones.addFirst(ProjectileFactory.getProjectilev(municion,this.x,this.y,this.game));
+            municiones.addFirst(ProjectileFactory.getProjectile(municion,this.x,this.y,this.game));
         } catch (Exception e) {
             e.printStackTrace();
         }

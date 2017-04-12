@@ -7,7 +7,7 @@ import com.Game.Game;
  * Created by Cristian44 on 28/3/2017.
  */
 public class ProjectileFactory{
-    public static Projectile getProjectilev(int type, int x, int y, Game game) throws Exception{
+    public static Projectile getProjectile(int type, int x, int y, Game game) throws Exception{
         if (type == 1){
             return new BalaJugador(game,x,y);
         }else if (type == 2){

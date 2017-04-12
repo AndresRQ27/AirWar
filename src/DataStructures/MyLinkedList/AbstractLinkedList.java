@@ -1,7 +1,7 @@
 package DataStructures.MyLinkedList;
 
 /**
- * Created by andres on 16/03/17.
+ * Created by andres on 16/03/17.ad
  * Project AirWar in EstructurasDeDatos.ListasEnlazadas
  */
 public abstract class AbstractLinkedList <T>{

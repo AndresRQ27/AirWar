@@ -3,8 +3,10 @@ package com.PowerUps;
 import com.Game.Game;
 
 /**
- * Created by pedro on 17/3/2017.
- * El Factory para la creación de poderes
+ * PowerUpsFactory
+ * Es el factory para los poderes
+ * @return un Poder
+ * @author  by pedro on 17/3/2017.
  */
 public class PowerUpsFactory {
     public static PowerUps getPower(String tipo, Game game) throws Exception{
