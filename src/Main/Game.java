@@ -1,7 +1,6 @@
 package Main;
 
-import Aircraft.Kamikaze;
-import Aircraft.Turrent;
+import Aircraft.EnemySpawner;
 import Aircraft.Unidad;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
@@ -12,12 +11,18 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import java.util.Random;
+
 /**
  * Created by Cristian44 on 24/3/2017.
  */
 public class Game extends JPanel{
+    public final int WIDTH = 640;
+    public final int HEIGHT = 640;
     Player player = new Player(this);
-    public SimpleLinkedList enemigosPantalla = new SimpleLinkedList();
+    public SimpleLinkedList screenQueue = new SimpleLinkedList();
+    public SimpleLinkedList levelQueue = new SimpleLinkedList();
+
 
     public Game() {
         addKeyListener(new KeyListener() {
@@ -34,35 +39,39 @@ public class Game extends JPanel{
                 player.keyPressed(e);
             }});
         setFocusable(true);
-        enemigosPantalla.addLast(new Kamikaze(this,player,300,0));
-        enemigosPantalla.addLast(new Kamikaze(this,player,300,100));
-        enemigosPantalla.addLast(new Turrent(this,player,300,0));
+        generateEnemiesQueue(100);
+
     }
+
     private void update(){
-        player.actualizar();
-        updateEnemigos();
+        player.update();
+        updateEnemies();
     }
-    private void updateEnemigos(){
-        if (enemigosPantalla!= null){
-            Node <Unidad> current = enemigosPantalla.getHead();
+
+    private void updateEnemies(){
+        if (screenQueue != null){
+            int index = 0;
+            Node <Unidad> current = screenQueue.getHead();
             while (current != null){
                 current.getObject().mover();
+
+                if (current.getObject().alive == true){
+                    index++;
+                }else{
+                    screenQueue.removeInPosition(index);
+                }
                 current = current.getNext();
             }
         }
     }
 
-    public void actualizarEnemigosPantalla(){
-        int index = 0;
-        if (enemigosPantalla!= null){
-            Node <Unidad> current = enemigosPantalla.getHead();
-            while (current != null){
-                if (current.getObject().alive == true){
-                    index++;
-                }else{
-                    enemigosPantalla.removeInPosition(index);
-                }
+    private void updateEnemiesInScreen(){
+        if (screenQueue.getlength()<5){
+            Node <Unidad> current = levelQueue.getHead();
+            while (current != null && screenQueue.getlength()<5){
+                screenQueue.addLast(current.getObject());
                 current = current.getNext();
+                levelQueue.removeFirst();
             }
         }
     }
@@ -73,8 +82,8 @@ public class Game extends JPanel{
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         player.paint(g2d);
         player.paintBalas(g2d);
-        if (enemigosPantalla!= null){
-            Node <Unidad> current = enemigosPantalla.getHead();
+        if (screenQueue != null){
+            Node <Unidad> current = screenQueue.getHead();
             while (current != null) {
                 current.getObject().paint(g2d);
                 current = current.getNext();
@@ -83,18 +92,42 @@ public class Game extends JPanel{
 
     }
 
+    public void generateEnemiesQueue(int cantidad){
+        while (cantidad > 0){
+            try {
+                levelQueue.addLast(EnemySpawner.getEnemy(this.RandomType(),this,player,RandomX(),0));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            cantidad--;
+        }
+    }
+
+    public int RandomType (){
+        Random number = new Random();
+        return number.nextInt(4);
+    }
+
+    public int RandomX(){
+        Random number = new Random();
+        return number.nextInt(WIDTH-64);
+    }
+
+
     public static void main (String [] args){
         JFrame frame = new JFrame("Air Wars");
         Game game = new Game();
         frame.add(game);
-        frame.setSize(960, 640);
+        frame.setSize(game.WIDTH, game.HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         while (true) {
             game.update();
+            game.updateEnemiesInScreen();
+
             game.repaint();
-            game.actualizarEnemigosPantalla();
+
 
             try {
                 Thread.sleep(15);

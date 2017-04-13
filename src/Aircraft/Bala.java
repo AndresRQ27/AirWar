@@ -10,17 +10,17 @@ import java.io.IOException;
 /**
  * Created by Cristian44 on 27/3/2017.
  */
-public class BalaJugador extends Projectile {
+public class Bala extends Projectile {
     public Player player;
 
-    public BalaJugador (Game game, Player player, int x, int y){
+    public Bala(Game game, Player player, int x, int y){
         this.game = game;
         this.player = player;
         this.posX = x;
         this.posY = y;
         this.ataque = 1;
         this.alive = true;
-        this.movilidadY = 3;
+        this.movilidadY = 5;
         this.width = 32;
         this.height = 32;
         try {
@@ -28,15 +28,5 @@ public class BalaJugador extends Projectile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    @Override
-    public void mover(){
-        if (collision()){
-            destruir();
-        }
-        if (posY - movilidadY < 0){
-            destruir();
-        }
-        posY-=movilidadY;
     }
 }

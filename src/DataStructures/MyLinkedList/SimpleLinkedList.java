@@ -9,11 +9,12 @@ public class SimpleLinkedList extends AbstractLinkedList {
     @Override
     public void addInPosition(Node node, int position) {
 
-        if (position == 0){
+        if (position == 0) {
 
             node.setNext(head);
             this.head = node;
-
+        }else if (position != 0 && this.head == null){
+            this.head = node;
         } else {
 
             Node aux1 = head;
@@ -94,4 +95,9 @@ public class SimpleLinkedList extends AbstractLinkedList {
             System.out.printf("%s%n", "Input unavailable");
         }
     }
+
+    public int getlength(){
+        return this.length;
+    }
 }
+

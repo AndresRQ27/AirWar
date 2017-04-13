@@ -20,8 +20,15 @@ public abstract class Projectile {
     public int width;
     public int height;
 
-    public void mover() {
-        if (posY + movilidadY > game.getHeight()) {
+    public void moverProyectilJugador() {
+        if (posY - movilidadY < 0) {
+            destruir();
+        }
+        posY -= movilidadY;
+    }
+
+    public void moverProyectilEnemigo() {
+        if (posY + movilidadY > game.HEIGHT) {
             destruir();
         }
         posY += movilidadY;
@@ -41,19 +48,4 @@ public abstract class Projectile {
     public Rectangle getBounds() {
         return new Rectangle(posX, posY, width, height);
     }
-
-    public boolean collision() {
-        boolean aux = false;
-        if (game.enemigosPantalla != null) {
-            Node<Unidad> current = game.enemigosPantalla.getHead();
-            while (current != null) {
-                if (current.getObject().getBounds().intersects(this.getBounds())) {
-                    aux = true;
-                }
-                current = current.getNext();
-            }
-        }
-        return aux;
-    }
-
 }

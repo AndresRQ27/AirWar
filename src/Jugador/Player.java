@@ -1,6 +1,5 @@
 package Jugador;
 
-import Aircraft.BalaJugador;
 import Aircraft.Projectile;
 import Aircraft.ProjectileFactory;
 import Aircraft.Unidad;
@@ -17,17 +16,18 @@ import java.io.IOException;
  * Created by Cristian44 on 27/3/2017.
  */
 public class Player extends Unidad{
+    boolean W = false,A = false,S = false,D = false;
     int movilidadX;
     int vidas;
     public SimpleLinkedList projectiles;
 
     public Player (Game game){
         this.game = game;
-        this.posX = 600;
-        this.posY = 500;
+        this.posX = game.WIDTH/2 - LADOSPRITE/2;
+        this.posY = game.HEIGHT - 120;
         this.alive = true;
         this.vidas = 3;
-        this.municion = 1;
+        this.ammunition = 2;
         this.projectiles = new SimpleLinkedList();
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
@@ -37,13 +37,29 @@ public class Player extends Unidad{
     }
 
     @Override
-    public void actualizar(){
+    public void update(){
         mover();
         moverBalas();
     }
 
     @Override
     public  void mover(){
+        if (W == true){
+            movilidadY = -3;
+        }else if (S == true) {
+            movilidadY = 3;
+        }else {
+            movilidadY = 0;
+        }
+        if (A == true){
+            movilidadX = -3;
+        }else if (D == true){
+            movilidadX = 3;
+        }else{
+            movilidadX = 0;
+        }
+
+
         if (posX + movilidadX > 0 && posX + movilidadX < game.getWidth()-LADOSPRITE)
             posX += movilidadX;
         if (posY + movilidadY > 0 && posY + movilidadY <game.getHeight()-LADOSPRITE){
@@ -56,7 +72,7 @@ public class Player extends Unidad{
         if (projectiles != null){
             Node <Projectile> current = projectiles.getHead();
             while (current != null){
-                current.getObject().mover();
+                current.getObject().moverProyectilJugador();
                 if (current.getObject().alive == true){
                     index++;
                 }else{
@@ -70,9 +86,12 @@ public class Player extends Unidad{
     public void paint(Graphics2D g) {
         if (alive == true){
             g.drawImage(sprite,posX,posY,null);
-        }else {
-            //descontar vidas
         }
+    }
+
+    @Override
+    public boolean collision() {
+        return false;
     }
 
     public void paintBalas (Graphics2D g){
@@ -85,32 +104,36 @@ public class Player extends Unidad{
         }
     }
 
-    public synchronized void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_S) {
-            movilidadY = 0;
-        }if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() ==KeyEvent.VK_D) {
-            movilidadX = 0;
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_W){
+            W = false;
+        }if (e.getKeyCode() == KeyEvent.VK_S) {
+            S = false;
+        }if (e.getKeyCode() == KeyEvent.VK_A){
+            A = false;
+        }if( e.getKeyCode() ==KeyEvent.VK_D) {
+            D = false;
         }if (e.getKeyCode() == KeyEvent.VK_J){
             shoot();
         }
     }
 
-    public synchronized void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            movilidadY = -2;
-        }if (e.getKeyCode() == KeyEvent.VK_S) {
-            movilidadY = 2;
-        }if (e.getKeyCode() == KeyEvent.VK_A) {
-            movilidadX = -2;
-        }if (e.getKeyCode() ==KeyEvent.VK_D){
-            movilidadX = 2;
+            W = true;
+        }else if (e.getKeyCode() == KeyEvent.VK_S) {
+            S = true;
+        }else if (e.getKeyCode() == KeyEvent.VK_A) {
+            A = true;
+        }else if (e.getKeyCode() ==KeyEvent.VK_D){
+            D = true;
         }
     }
 
     @Override
     public void shoot() {
         try {
-            projectiles.addFirst(ProjectileFactory.getProjectilev(municion,game,this,posX+16,posY));
+            projectiles.addFirst(ProjectileFactory.getProjectile(ammunition,game,this,posX+22,posY-25));
         } catch (Exception e) {
             e.printStackTrace();
         }
