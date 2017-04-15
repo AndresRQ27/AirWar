@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Aircraft/Bullet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Aircraft/Missile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Main/Nivel.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Aircraft/Bala.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Aircraft/Misile.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/bala.png" afterPath="$PROJECT_DIR$/resources/bullet.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/misile.png" afterPath="$PROJECT_DIR$/resources/missile.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/misileLauncher.png" afterPath="$PROJECT_DIR$/resources/missileTurret.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/turrent.png" afterPath="$PROJECT_DIR$/resources/turret.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Aircraft/MisileTurrent.java" afterPath="$PROJECT_DIR$/src/Aircraft/MissileTurret.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Aircraft/Turrent.java" afterPath="$PROJECT_DIR$/src/Aircraft/Turret.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Bomber.java" afterPath="$PROJECT_DIR$/src/Aircraft/Bomber.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Enemy.java" afterPath="$PROJECT_DIR$/src/Aircraft/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" afterPath="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Jet.java" afterPath="$PROJECT_DIR$/src/Aircraft/Jet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Kamikaze.java" afterPath="$PROJECT_DIR$/src/Aircraft/Kamikaze.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Laser.java" afterPath="$PROJECT_DIR$/src/Aircraft/Laser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Projectile.java" afterPath="$PROJECT_DIR$/src/Aircraft/Projectile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/ProjectileFactory.java" afterPath="$PROJECT_DIR$/src/Aircraft/ProjectileFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Unidad.java" afterPath="$PROJECT_DIR$/src/Aircraft/Unidad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Jugador/Player.java" afterPath="$PROJECT_DIR$/src/Jugador/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Game.java" afterPath="$PROJECT_DIR$/src/Main/Game.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -547,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492055982167</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10; PD: tuve unos problemas asi que no estoy seguro si arregle todo&#10;">
+      <created>1492238119495</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1492238119495</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -630,7 +615,8 @@
     <MESSAGE value="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves" />
     <MESSAGE value="Creacion de las clases:&#10;BalaJugador, Projectile, Kamikaze, ProjectileFactory, Turrent&#10;Adicción de nuevas imagenes:&#10;bala, laser, misile, misileLauncher y turrent" />
     <MESSAGE value="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10;" />
+    <MESSAGE value="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10; PD: tuve unos problemas asi que no estoy seguro si arregle todo&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10; PD: tuve unos problemas asi que no estoy seguro si arregle todo&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
