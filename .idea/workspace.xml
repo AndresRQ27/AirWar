@@ -532,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492238119495</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="se agregaron nuevas imagenes, y los sonidos">
+      <created>1492239627751</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1492239627751</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -616,7 +623,8 @@
     <MESSAGE value="Creacion de las clases:&#10;BalaJugador, Projectile, Kamikaze, ProjectileFactory, Turrent&#10;Adicción de nuevas imagenes:&#10;bala, laser, misile, misileLauncher y turrent" />
     <MESSAGE value="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10;" />
     <MESSAGE value="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10; PD: tuve unos problemas asi que no estoy seguro si arregle todo&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modificación en la SimpleLinkedList, se agrego un caso en que si la lista esta vacía y se hace un insert last que lo agregue como si fuera un insert first.&#10;Modificación en la clase game: se crearon los metodos para generar las listas de nivel y que la lista de enemigos en pantalla se este actualizando constantemente. Y se crearon los metodos random para generar los tipos aleatorios y la posicion aleatoria.&#10;Modificación de la clase player: cambio la forma en la que se maneja el movimiento del jugador para evitar que se atore.&#10;Modificaciones en las clases de Projectile, ProjectileFactory, BalaJugador se le hizo refactor a Bala, se creo la clase Misile y Laser&#10;Creación de las clases Bomber, Jet, Turrent, MisileTurrent.&#10; Creacion de la Clase EnemySpawner que es el factory de los enemigos&#10; Creacion de la clase Enemy que tiene algunos metodos diferentes al del jugador&#10; Modificación de las imagenes de las torretas&#10; PD: tuve unos problemas asi que no estoy seguro si arregle todo&#10;" />
+    <MESSAGE value="se agregaron nuevas imagenes, y los sonidos" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agregaron nuevas imagenes, y los sonidos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
