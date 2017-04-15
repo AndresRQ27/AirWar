@@ -22,7 +22,6 @@ public abstract class Unidad {
      * game sirve para que las unidades sepan los margenes de la pantalla
      */
     public int movilidadY;
-    public int attack;
     public int resistance;
     public BufferedImage sprite;
     public int LADOSPRITE = 64;
@@ -32,11 +31,11 @@ public abstract class Unidad {
     public Game game;
     public int ammunition;
 
-    public void shoot(){
-    }
+    public abstract void shoot();
 
+    public abstract void move();
 
-    public abstract void mover();
+    public abstract void moveProjectile();
 
     /**
      * Este metodo no va a cambiar para ninguna unidad, se utiliza ya sea cuando es destruida por el jugador
@@ -61,6 +60,8 @@ public abstract class Unidad {
             g.drawImage(sprite,posX,posY,null);
         }
     }
+
+    public abstract void paintProjectiles(Graphics2D g);
 
     /**
      * este metodo se devolver un rectangulo de 64 * 64 con el que se revisan las colisiones

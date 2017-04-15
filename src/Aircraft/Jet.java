@@ -1,5 +1,6 @@
 package Aircraft;
 
+import DataStructures.MyLinkedList.SimpleLinkedList;
 import Jugador.Player;
 import Main.Game;
 
@@ -16,21 +17,17 @@ public class Jet extends Enemy {
         this.player = player;
         this.posX = x;
         this.posY = y;
+        this.resistance = 1;
         this.movilidadY = 3;
         this.alive = true;
+        this.ammunition = 1;
+        this.timer = 0;
+        this.dying = false;
+        this.projectiles = new SimpleLinkedList();
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/jet.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public void mover(){
-        if (collision() == true){
-            destroy();
-        }
-        super.mover();
-    }
-
 }

@@ -17,7 +17,7 @@ public class Laser extends Projectile {
         this.player = player;
         this.posX = x;
         this.posY = y;
-        this.ataque = 3;
+        this.attack = 3;
         this.alive = true;
         this.movilidadY = 5;
         this.width = 32;

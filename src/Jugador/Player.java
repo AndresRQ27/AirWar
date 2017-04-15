@@ -27,7 +27,7 @@ public class Player extends Unidad{
         this.posY = game.HEIGHT - 120;
         this.alive = true;
         this.vidas = 3;
-        this.ammunition = 2;
+        this.ammunition = 1;
         this.projectiles = new SimpleLinkedList();
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
@@ -38,12 +38,12 @@ public class Player extends Unidad{
 
     @Override
     public void update(){
-        mover();
-        moverBalas();
+        move();
+        moveProjectile();
     }
 
     @Override
-    public  void mover(){
+    public  void move(){
         if (W == true){
             movilidadY = -3;
         }else if (S == true) {
@@ -67,7 +67,8 @@ public class Player extends Unidad{
         }
     }
 
-    public void moverBalas(){
+    @Override
+    public void moveProjectile(){
         int index = 0;
         if (projectiles != null){
             Node <Projectile> current = projectiles.getHead();
@@ -94,7 +95,8 @@ public class Player extends Unidad{
         return false;
     }
 
-    public void paintBalas (Graphics2D g){
+    @Override
+    public void paintProjectiles(Graphics2D g){
         if (projectiles != null){
             Node <Projectile> current = projectiles.getHead();
             while (current != null){
@@ -133,7 +135,7 @@ public class Player extends Unidad{
     @Override
     public void shoot() {
         try {
-            projectiles.addFirst(ProjectileFactory.getProjectile(ammunition,game,this,posX+22,posY-25));
+            projectiles.addFirst(ProjectileFactory.getProjectile(ammunition,game,this,posX+22,posY-25,0));
         } catch (Exception e) {
             e.printStackTrace();
         }

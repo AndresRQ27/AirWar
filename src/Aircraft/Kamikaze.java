@@ -1,5 +1,6 @@
 package Aircraft;
 
+import DataStructures.MyLinkedList.SimpleLinkedList;
 import Jugador.Player;
 import Main.Game;
 
@@ -29,9 +30,13 @@ public class Kamikaze extends Enemy {
         this.player = player;
         this.posX = x;
         this.posY = y;
+        this.resistance = 2;
         this.movilidadX = 3;
         this.movilidadY = 2;
         this.alive = true;
+        this.timer = 0;
+        this.dying = false;
+        this.projectiles = new SimpleLinkedList();
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/kamikaze.png"));
         } catch (IOException e) {
@@ -40,26 +45,24 @@ public class Kamikaze extends Enemy {
     }
 
     @Override
-    public void mover(){
+    public void move(){
         /**
          * Los 2 primeros if son para que el kamikaze siga la posicion del jugador
-         * el tercer if lo que hace es que si se pasa del margen de la pantalla la destruye
-         */
-        if (collision() == true){
-            destroy();
-        }
+         **/
+        super.move();
         if (posX + movilidadX < player.posX){
             movilidadX = 3;
         }
         if (posX + movilidadX > player.posX){
             movilidadX = -3;
         }
-        super.mover();
 
-        /**
-         * Aca es donde va asignando el movimiento
-         */
         posX += movilidadX;
         posY += movilidadY;
+    }
+
+    @Override
+    public void shoot(){
+
     }
 }

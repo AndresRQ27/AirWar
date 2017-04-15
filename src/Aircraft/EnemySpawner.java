@@ -9,9 +9,9 @@ import Jugador.Player;
 public class EnemySpawner  {
     public static Enemy getEnemy (int type, Game game,Player player, int x, int y) throws Exception{
         if (type == 0){
-            return new Turrent(game,player,x,y);
+            return new Turret(game,player,x,y);
         }else if (type == 1){
-            return new MisileTurrent(game,player,x,y);
+            return new MissileTurret(game,player,x,y);
         }else if (type == 2){
             return new Kamikaze(game,player,x,y);
         }else if (type == 3){

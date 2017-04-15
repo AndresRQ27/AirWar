@@ -1,6 +1,5 @@
 package Aircraft;
 
-import DataStructures.MyLinkedList.Node;
 import Main.Game;
 
 import java.awt.*;
@@ -12,7 +11,7 @@ import java.awt.image.BufferedImage;
 public abstract class Projectile {
     public int posX;
     public int posY;
-    public int ataque;
+    public int attack;
     public BufferedImage sprite;
     public int movilidadY;
     public boolean alive;
@@ -22,19 +21,19 @@ public abstract class Projectile {
 
     public void moverProyectilJugador() {
         if (posY - movilidadY < 0) {
-            destruir();
+            destroy();
         }
         posY -= movilidadY;
     }
 
-    public void moverProyectilEnemigo() {
+    public void moveEnemyProjectile() {
         if (posY + movilidadY > game.HEIGHT) {
-            destruir();
+            destroy();
         }
         posY += movilidadY;
     }
 
-    public void destruir() {
+    public void destroy() {
         alive = false;
     }
 

@@ -1,7 +1,7 @@
 package Main;
 
+import Aircraft.Enemy;
 import Aircraft.EnemySpawner;
-import Aircraft.Unidad;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import Jugador.Player;
@@ -22,6 +22,8 @@ public class Game extends JPanel{
     Player player = new Player(this);
     public SimpleLinkedList screenQueue = new SimpleLinkedList();
     public SimpleLinkedList levelQueue = new SimpleLinkedList();
+    private Nivel nivel1 = new Nivel(0,-3000);
+
 
 
     public Game() {
@@ -39,11 +41,11 @@ public class Game extends JPanel{
                 player.keyPressed(e);
             }});
         setFocusable(true);
-        generateEnemiesQueue(100);
-
+        generateEnemiesQueue(50);
     }
 
     private void update(){
+        nivel1.move();
         player.update();
         updateEnemies();
     }
@@ -51,14 +53,23 @@ public class Game extends JPanel{
     private void updateEnemies(){
         if (screenQueue != null){
             int index = 0;
-            Node <Unidad> current = screenQueue.getHead();
+            Node <Enemy> current = screenQueue.getHead();
             while (current != null){
-                current.getObject().mover();
+                current.getObject().update();
 
-                if (current.getObject().alive == true){
-                    index++;
+                if (current.getObject().alive == false){
+                    if (current.getObject().projectiles !=null){
+                        if (current.getObject().projectiles.getHead() == null) {
+                            screenQueue.removeInPosition(index);
+                        }else {
+                            index++;
+                        }
+                    }else{
+                        screenQueue.removeInPosition(index);
+                    }
+
                 }else{
-                    screenQueue.removeInPosition(index);
+                    index++;
                 }
                 current = current.getNext();
             }
@@ -67,7 +78,7 @@ public class Game extends JPanel{
 
     private void updateEnemiesInScreen(){
         if (screenQueue.getlength()<5){
-            Node <Unidad> current = levelQueue.getHead();
+            Node <Enemy> current = levelQueue.getHead();
             while (current != null && screenQueue.getlength()<5){
                 screenQueue.addLast(current.getObject());
                 current = current.getNext();
@@ -80,12 +91,14 @@ public class Game extends JPanel{
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+        nivel1.paint(g2d);
         player.paint(g2d);
-        player.paintBalas(g2d);
+        player.paintProjectiles(g2d);
         if (screenQueue != null){
-            Node <Unidad> current = screenQueue.getHead();
+            Node <Enemy> current = screenQueue.getHead();
             while (current != null) {
                 current.getObject().paint(g2d);
+                current.getObject().paintProjectiles(g2d);
                 current = current.getNext();
             }
         }
@@ -105,7 +118,7 @@ public class Game extends JPanel{
 
     public int RandomType (){
         Random number = new Random();
-        return number.nextInt(4);
+        return number.nextInt(5);
     }
 
     public int RandomX(){
@@ -121,6 +134,7 @@ public class Game extends JPanel{
         frame.setSize(game.WIDTH, game.HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
 
         while (true) {
             game.update();
