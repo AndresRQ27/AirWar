@@ -2,6 +2,7 @@ package Main;
 
 import Aircraft.Enemy;
 import Aircraft.EnemySpawner;
+import Aircraft.EnemyTypes;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import Jugador.Player;
@@ -17,11 +18,16 @@ import java.util.Random;
  * Created by Cristian44 on 24/3/2017.
  */
 public class Game extends JPanel{
+
+    private static final Random random = new Random();
+    private static final EnemyTypes[] enemyList = EnemyTypes.values();
+
     public final int WIDTH = 640;
     public final int HEIGHT = 640;
-    Player player = new Player(this);
-    public SimpleLinkedList screenQueue = new SimpleLinkedList();
-    public SimpleLinkedList levelQueue = new SimpleLinkedList();
+    private Player player = new Player(this);
+    private SimpleLinkedList screenQueue = new SimpleLinkedList();
+    private SimpleLinkedList levelQueue = new SimpleLinkedList();
+
     private Nivel nivel1 = new Nivel(0,-3000);
 
 
@@ -41,6 +47,7 @@ public class Game extends JPanel{
                 player.keyPressed(e);
             }});
         setFocusable(true);
+        //Cambiar el generador de enemigos por 25*X donde X es el nivel
         generateEnemiesQueue(50);
     }
 
@@ -53,11 +60,11 @@ public class Game extends JPanel{
     private void updateEnemies(){
         if (screenQueue != null){
             int index = 0;
-            Node <Enemy> current = screenQueue.getHead();
+            Node<Aircraft.Enemy> current = screenQueue.getHead();
             while (current != null){
                 current.getObject().update();
 
-                if (current.getObject().alive == false){
+                if (!current.getObject().alive){
                     if (current.getObject().projectiles !=null){
                         if (current.getObject().projectiles.getHead() == null) {
                             screenQueue.removeInPosition(index);
@@ -78,7 +85,7 @@ public class Game extends JPanel{
 
     private void updateEnemiesInScreen(){
         if (screenQueue.getlength()<5){
-            Node <Enemy> current = levelQueue.getHead();
+            Node<Aircraft.Enemy> current = levelQueue.getHead();
             while (current != null && screenQueue.getlength()<5){
                 screenQueue.addLast(current.getObject());
                 current = current.getNext();
@@ -95,7 +102,7 @@ public class Game extends JPanel{
         player.paint(g2d);
         player.paintProjectiles(g2d);
         if (screenQueue != null){
-            Node <Enemy> current = screenQueue.getHead();
+            Node<Aircraft.Enemy> current = screenQueue.getHead();
             while (current != null) {
                 current.getObject().paint(g2d);
                 current.getObject().paintProjectiles(g2d);
@@ -105,27 +112,18 @@ public class Game extends JPanel{
 
     }
 
-    public void generateEnemiesQueue(int cantidad){
+    private void generateEnemiesQueue(int cantidad){
         while (cantidad > 0){
             try {
-                levelQueue.addLast(EnemySpawner.getEnemy(this.RandomType(),this,player,RandomX(),0));
+                //RandomX = random.nextInt(WIDTH-64);
+                //RandomType = EnemySpawner.createEnemy(enemyList[random.nextInt(enemyList.length)]; **usando enum
+                levelQueue.addLast(EnemySpawner.createEnemy(enemyList[random.nextInt(enemyList.length)],this,player,random.nextInt(WIDTH-64),0));
             } catch (Exception e) {
                 e.printStackTrace();
             }
             cantidad--;
         }
     }
-
-    public int RandomType (){
-        Random number = new Random();
-        return number.nextInt(5);
-    }
-
-    public int RandomX(){
-        Random number = new Random();
-        return number.nextInt(WIDTH-64);
-    }
-
 
     public static void main (String [] args){
         JFrame frame = new JFrame("Air Wars");
