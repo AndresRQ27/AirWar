@@ -14,7 +14,7 @@ public abstract class AbstractLinkedList <T>{
      * @param object object of the node
      */
     public void addFirst(T object){
-        addFirst(new Node(object, null, null));
+        addFirst(new Node(object));
     }
 
     /**
@@ -30,7 +30,7 @@ public abstract class AbstractLinkedList <T>{
      * @param object object of the node
      */
     public void addLast(T object){
-        addLast(new Node(object, null, null));
+        addLast(new Node(object));
     }
 
     /**
@@ -41,6 +41,20 @@ public abstract class AbstractLinkedList <T>{
         addInPosition(node, length);
     }
 
+    /**
+     * add object in the position specified
+     * @param object object to add
+     * @param position position to add
+     */
+    public void addInPosition(T object, int position){
+
+        if (position > length){
+            position = length;
+        } else if (position < 0){
+            position = 0;
+        }
+        addInPosition(new Node(object), position);
+    }
 
     /**
      * add node in the position said
@@ -139,9 +153,38 @@ public abstract class AbstractLinkedList <T>{
     }
 
     /**
+     * return the object in the position asked. useful if trying to use it as an array
+     * @param position int of the position asked
+     * @return object in the position
+     */
+    public T whatsIn(int position){
+
+        T result = null;
+
+        if (position < length) {
+            Node aux = head;
+
+            for (int i = 0; i < position; i++) {
+                aux = aux.getNext();
+            }
+
+            result = (T) aux.getObject();
+
+        } else {
+            System.out.println("Position Not Found");
+        }
+
+        return result;
+    }
+
+    /**
      * Method that switch the position of two nodes
      * @param position1 position of the first node to swap
      * @param position2 position of the second node to swap
      */
     public abstract void swap(int position1, int position2);
+
+    public int getlength(){
+        return this.length;
+    }
 }
