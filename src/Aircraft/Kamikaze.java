@@ -1,8 +1,9 @@
 package Aircraft;
 
 import DataStructures.MyLinkedList.SimpleLinkedList;
-import Jugador.Player;
+import Player.Player;
 import Main.Game;
+import PowerUps.PowerUpFactory;
 
 
 import javax.imageio.ImageIO;
@@ -25,7 +26,7 @@ public class Kamikaze extends Enemy {
      * Es necesario asignar las movilidades en X y Y
      * y alive como true
      */
-    public Kamikaze(Game game,Player player,int x, int y){
+    public Kamikaze(Game game,Player player,int x, int y, int power){
         this.game = game;
         this.player = player;
         this.posX = x;
@@ -36,11 +37,24 @@ public class Kamikaze extends Enemy {
         this.alive = true;
         this.timer = 0;
         this.dying = false;
+        this.isEvil = true;
+        this.scoreValue = 200;
         this.projectiles = new SimpleLinkedList();
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/kamikaze.png"));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        if (power >=  80){
+            isPowerUp = true;
+            try {
+                powerUp = PowerUpFactory.getPower(power,game);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            isPowerUp = false;
+            powerUp = null;
         }
     }
 
@@ -50,14 +64,15 @@ public class Kamikaze extends Enemy {
          * Los 2 primeros if son para que el kamikaze siga la posicion del jugador
          **/
         super.move();
-        if (posX + movilidadX < player.posX){
-            movilidadX = 3;
+        if (this.isEvil == true){
+            if (posX + movilidadX < player.posX){
+                movilidadX = 3;
+            }
+            if (posX + movilidadX > player.posX){
+                movilidadX = -3;
+            }
+            posX += movilidadX;
         }
-        if (posX + movilidadX > player.posX){
-            movilidadX = -3;
-        }
-
-        posX += movilidadX;
         posY += movilidadY;
     }
 

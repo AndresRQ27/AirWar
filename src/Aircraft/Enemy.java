@@ -2,7 +2,10 @@ package Aircraft;
 
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
-import Jugador.Player;
+import Player.Player;
+import PowerUps.PowerUp;
+import Projectiles.Projectile;
+import Projectiles.ProjectileFactory;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,22 +17,25 @@ import java.io.IOException;
 public abstract class Enemy extends Unidad {
     public Player player;
     public SimpleLinkedList projectiles;
+    public PowerUp powerUp;
     public int timer;
+    public int scoreValue;
     public boolean dying;
+    public boolean isPowerUp;
+    public boolean isEvil;
 
     /**
      * Este metodo solo hay que sobreescribirlo en la clase del kamikaze
      */
     @Override
     public void update(){
-        if (alive == true){
-            if(posY % 100 == 0){
+        if (alive == true && isEvil == true){
+            if(posY % 150 == 0){
                 shoot();
             }
         }
         moveProjectile();
         move();
-
     }
 
     @Override
@@ -40,11 +46,17 @@ public abstract class Enemy extends Unidad {
         if (dying == true && timer <= 10){
             timer++;
         }
-        if (collision()){
+        if (collision() && dying == false){
             if(resistance <= 0){
-                blowup();
+                if (isPowerUp == true){
+                    isEvil = false;
+                    generatePowerUp();
+                }else{
+                    blowup();
+                }
             }
         }
+
         if (posY + movilidadY > game.getHeight()){
             destroy();
         }
@@ -81,20 +93,16 @@ public abstract class Enemy extends Unidad {
     @Override
     public boolean collision() {
         boolean aux = false;
-
         if (player.projectiles != null) {
             Node<Projectile> current = player.projectiles.getHead();
             while (current != null) {
-                if (current.getObject().getBounds().intersects(getBounds())) {
-                    this.resistance-= current.getObject().attack;
+                if (current.getObject().getBounds().intersects(getBounds()) && isEvil == true) {
+                    this.resistance -= current.getObject().attack;
                     current.getObject().destroy();
                     aux = true;
                     break;
                 }
                 current = current.getNext();
-            }
-            if (player.getBounds().intersects(getBounds())){
-                aux = true;
             }
         }
         return aux;
@@ -111,13 +119,17 @@ public abstract class Enemy extends Unidad {
 
     public void blowup(){
         dying = true;
+        player.score+=scoreValue;
         try {
             this.sprite = ImageIO.read(getClass().getResourceAsStream("/explosion.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
-
+    public void generatePowerUp(){
+        player.score+=scoreValue;
+        if(isPowerUp == true){
+            this.sprite = this.powerUp.sprite;
+        }
+    }
 }

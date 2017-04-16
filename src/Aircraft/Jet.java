@@ -1,8 +1,9 @@
 package Aircraft;
 
 import DataStructures.MyLinkedList.SimpleLinkedList;
-import Jugador.Player;
+import Player.Player;
 import Main.Game;
+import PowerUps.PowerUpFactory;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.io.IOException;
  */
 public class Jet extends Enemy {
 
-    public Jet (Game game, Player player, int x, int y){
+    public Jet (Game game, Player player, int x, int y, int power){
         this.game = game;
         this.player = player;
         this.posX = x;
@@ -23,11 +24,24 @@ public class Jet extends Enemy {
         this.ammunition = 1;
         this.timer = 0;
         this.dying = false;
+        this.isEvil = true;
+        this.scoreValue = 100;
         this.projectiles = new SimpleLinkedList();
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/jet.png"));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        if (power >= 80){
+            isPowerUp = true;
+            try {
+                powerUp = PowerUpFactory.getPower(power,game);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            isPowerUp = false;
+            powerUp = null;
         }
     }
 }

@@ -1,6 +1,6 @@
-package Aircraft;
+package Projectiles;
 
-import Jugador.Player;
+import Player.Player;
 import Main.Game;
 
 import javax.imageio.ImageIO;
@@ -19,9 +19,9 @@ public class Laser extends Projectile {
         this.posY = y;
         this.attack = 3;
         this.alive = true;
-        this.movilidadY = 5;
-        this.width = 32;
-        this.height = 32;
+        this.movilidadY = 4;
+        this.width = 10;
+        this.height = 16;
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/laser.png"));
         } catch (IOException e) {

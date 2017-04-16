@@ -1,6 +1,6 @@
-package Aircraft;
+package Projectiles;
 
-import Jugador.Player;
+import Player.Player;
 import Main.Game;
 
 import javax.imageio.ImageIO;
@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Cristian44 on 12/4/2017.
  */
-public class Missile extends Projectile{
+public class Missile extends Projectile {
     public Player player;
 
     public Missile(Game game, Player player, int x, int y, int source){
@@ -18,9 +18,9 @@ public class Missile extends Projectile{
         this.posX = x;
         this.posY = y;
         this.alive = true;
-        this.movilidadY = 5;
-        this.width = 32;
-        this.height = 32;
+        this.movilidadY = 4;
+        this.width = 10;
+        this.height = 16;
         if (source == 0){
             this.attack = 2;
             try {

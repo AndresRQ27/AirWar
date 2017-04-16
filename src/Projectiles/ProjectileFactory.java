@@ -1,6 +1,6 @@
-package Aircraft;
+package Projectiles;
 
-import Jugador.Player;
+import Player.Player;
 import Main.Game;
 
 /**
