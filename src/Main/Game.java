@@ -20,14 +20,12 @@ import java.util.*;
 public class Game extends JPanel{
 
     private static final Random random = new Random();
-    private static final EnemyTypes[] enemyList = EnemyTypes.values();
-    private static Random randomPower = new Random();
     private int numplanes;
 
     public final int WIDTH = 640;
     public final int HEIGHT = 640;
-    private Player player = new Player(this);
-    private MyQueue screenQueue = new MyQueue();
+    public Player player = new Player(this);
+    public MyQueue screenQueue = new MyQueue();
     private MyQueue planesQueue = new MyQueue();
     private MyQueue turretQueue = new MyQueue();
 
@@ -137,7 +135,7 @@ public class Game extends JPanel{
         //Aviones
         while ((int)planes > 0){
             try {
-                planesQueue.enqueue(EnemySpawner.createEnemy(Enemies.planesList.whatsIn(random.nextInt(Enemies.planesList.getlength())),this,player,64*(random.nextInt(8)+1),0));
+                planesQueue.enqueue(EnemySpawner.createEnemy(Enemies.planesList.whatsIn(random.nextInt(Enemies.planesList.getlength())),this,player,64*(random.nextInt(8)+1),0, random.nextInt(100)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -147,7 +145,7 @@ public class Game extends JPanel{
         //Torre
         while ((int)turrets > 0){
             try {
-                turretQueue.enqueue(EnemySpawner.createEnemy(Enemies.turretList.whatsIn(random.nextInt(Enemies.turretList.getlength())),this,player,64*(random.nextInt(8)+1),0));
+                turretQueue.enqueue(EnemySpawner.createEnemy(Enemies.turretList.whatsIn(random.nextInt(Enemies.turretList.getlength())),this,player,64*(random.nextInt(8)+1),0, random.nextInt(100)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
