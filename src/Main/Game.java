@@ -1,7 +1,8 @@
 package Main;
 
 import Aircraft.EnemySpawner;
-import Aircraft.EnemyTypes;
+import Aircraft.Enemies;
+import DataStructures.MyLinkedList.MyQueue;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import Player.Player;
@@ -11,7 +12,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Cristian44 on 24/3/2017.
@@ -21,12 +22,14 @@ public class Game extends JPanel{
     private static final Random random = new Random();
     private static final EnemyTypes[] enemyList = EnemyTypes.values();
     private static Random randomPower = new Random();
+    private int numplanes;
 
     public final int WIDTH = 640;
     public final int HEIGHT = 640;
-    public Player player = new Player(this);
-    public SimpleLinkedList screenQueue = new SimpleLinkedList();
-    private SimpleLinkedList levelQueue = new SimpleLinkedList();
+    private Player player = new Player(this);
+    private MyQueue screenQueue = new MyQueue();
+    private MyQueue planesQueue = new MyQueue();
+    private MyQueue turretQueue = new MyQueue();
 
     private Nivel nivel1 = new Nivel(0,-3000);
     public static int Lifes;
@@ -87,12 +90,23 @@ public class Game extends JPanel{
     }
 
     private void updateEnemiesInScreen(){
-        if (screenQueue.getlength()<2){
-            Node<Aircraft.Enemy> current = levelQueue.getHead();
-            while (current != null && screenQueue.getlength()<2){
-                screenQueue.addLast(current.getObject());
-                current = current.getNext();
-                levelQueue.removeFirst();
+        if (screenQueue.getlength()<4){
+
+            Node<Aircraft.Enemy> planes = planesQueue.getHead();
+            Node<Aircraft.Enemy> turret = turretQueue.getHead();
+
+            if (numplanes >= 5){
+                screenQueue.enqueue(turret.getObject());
+                turretQueue.dequeue();
+                numplanes = 0;
+
+            } else {
+                while (planes != null && screenQueue.getlength() < 3) {
+                    screenQueue.enqueue(planes.getObject());
+                    planes = planes.getNext();
+                    planesQueue.dequeue();
+                    numplanes++;
+                }
             }
         }
     }
@@ -115,15 +129,29 @@ public class Game extends JPanel{
     }
 
     private void generateEnemiesQueue(int cantidad){
-        while (cantidad > 0){
+
+        double planes = 3*cantidad/4;
+        double turrets = cantidad/4 + 1;
+        new Enemies();
+
+        //Aviones
+        while ((int)planes > 0){
             try {
-                //RandomX = random.nextInt(WIDTH-64);
-                //RandomType = EnemySpawner.createEnemy(enemyList[random.nextInt(enemyList.length)]; **usando enum
-                levelQueue.addLast(EnemySpawner.createEnemy(enemyList[random.nextInt(enemyList.length)],this,player,64*random.nextInt(10),0,randomPower.nextInt(100)));
+                planesQueue.enqueue(EnemySpawner.createEnemy(Enemies.planesList.whatsIn(random.nextInt(Enemies.planesList.getlength())),this,player,64*(random.nextInt(8)+1),0));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            cantidad--;
+            planes--;
+        }
+
+        //Torre
+        while ((int)turrets > 0){
+            try {
+                turretQueue.enqueue(EnemySpawner.createEnemy(Enemies.turretList.whatsIn(random.nextInt(Enemies.turretList.getlength())),this,player,64*(random.nextInt(8)+1),0));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            turrets--;
         }
     }
 
@@ -142,7 +170,6 @@ public class Game extends JPanel{
             game.update();
             game.updateEnemiesInScreen();
             game.repaint();
-
 
             try {
                 Thread.sleep(15);
