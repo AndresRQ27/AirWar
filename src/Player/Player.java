@@ -10,6 +10,7 @@ import Aircraft.Unidad;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import Main.Game;
+import Sound.Sounds;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -31,6 +32,7 @@ public class Player extends Unidad{
     public MyStack powerUps;
     public int score;
     public boolean shield;
+    public Sounds sounds;
 
     public Player (Game game){
         this.game = game;
@@ -185,6 +187,7 @@ public class Player extends Unidad{
             if (powerUps.getHead() != null){
                 Node <PowerUp> current = powerUps.getHead();
                 current.getObject().Use();
+                Sounds.SHIELD.play();
                 powerUps.removeFirst();
             }
         }
@@ -209,11 +212,19 @@ public class Player extends Unidad{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        if (ammunition == 1){
+            Sounds.BULLET.play();
+        } else if (ammunition == 2){
+            Sounds.MISSILE.play();
+        } else if (ammunition == 3){
+            Sounds.LASER.play();
+        }
     }
 
     public void blowup(){
         dying = true;
         setSprite(1);
+        Sounds.EXPLOSION.play();
         if (Lifes > 0){
             this.Lifes--;
             this.invincibility = true;
