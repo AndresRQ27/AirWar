@@ -4,7 +4,6 @@ import Aircraft.EnemySpawner;
 import Aircraft.Enemies;
 import DataStructures.MyLinkedList.MyQueue;
 import DataStructures.MyLinkedList.Node;
-import DataStructures.MyLinkedList.SimpleLinkedList;
 import Player.Player;
 
 import javax.swing.*;
@@ -29,7 +28,7 @@ public class Game extends JPanel{
     private MyQueue planesQueue = new MyQueue();
     private MyQueue turretQueue = new MyQueue();
 
-    private Nivel nivel1 = new Nivel(0,-3000);
+    private Nivel nivel = new Nivel();
     public static int Lifes;
     public static int score;
 
@@ -56,7 +55,7 @@ public class Game extends JPanel{
     private void update(){
         Lifes = player.Lifes;
         score = player.score;
-        nivel1.move();
+        nivel.move();
         player.update();
         updateEnemies();
     }
@@ -113,7 +112,7 @@ public class Game extends JPanel{
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-        nivel1.paint(g2d);
+        nivel.paint(g2d);
         player.paint(g2d);
         player.paintProjectiles(g2d);
         if (screenQueue != null){

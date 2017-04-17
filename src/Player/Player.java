@@ -1,7 +1,9 @@
 package Player;
 
 import Aircraft.Enemy;
+import DataStructures.MyLinkedList.MyStack;
 import PowerUps.PowerUp;
+import PowerUps.Shield;
 import Projectiles.Projectile;
 import Projectiles.ProjectileFactory;
 import Aircraft.Unidad;
@@ -24,9 +26,11 @@ public class Player extends Unidad{
     public boolean invincibility;
     public boolean dying;
     public int timer;
+    public int shieldTimer;
     public SimpleLinkedList projectiles;
-    public SimpleLinkedList powerUps;
+    public MyStack powerUps;
     public int score;
+    public boolean shield;
 
     public Player (Game game){
         this.game = game;
@@ -37,22 +41,30 @@ public class Player extends Unidad{
         this.resistance = 2;
         this.ammunition = 1;
         this.invincibility = false;
+        this.shield = false;
         this.dying = false;
         this.timer = 0;
+        this.shieldTimer = 0;
         this.score = 0;
         this.projectiles = new SimpleLinkedList();
-        this.powerUps = new SimpleLinkedList();
-        try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.powerUps = new MyStack();
+       setSprite(0);
     }
 
     @Override
     public void update(){
         move();
         moveProjectile();
+        if(shieldTimer >= 500){
+            invincibility = false;
+            shield = false;
+            shieldTimer = 0;
+            setSprite(0);
+        }
+        if (shield == true){
+            shieldTimer++;
+        }
+
     }
 
     @Override
@@ -127,8 +139,13 @@ public class Player extends Unidad{
                 if (current.getObject().getBounds().intersects(getBounds())) {
                     if (current.getObject().dying == false){
                         if (current.getObject().isPowerUp == true && current.getObject().isEvil == false){
-                            current.getObject().powerUp.Use();
-                            current.getObject().destroy();
+                            if (current.getObject().powerUp.getClass() == Shield.class){
+                                powerUps.push(current.getObject().powerUp);
+                                current.getObject().destroy();
+                            }else{
+                                current.getObject().powerUp.Use();
+                                current.getObject().destroy();
+                            }
                         }else{
                             current.getObject().blowup();
                             blowup();
@@ -196,11 +213,7 @@ public class Player extends Unidad{
 
     public void blowup(){
         dying = true;
-        try {
-            this.sprite = ImageIO.read(getClass().getResourceAsStream("/explosion.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        setSprite(1);
         if (Lifes > 0){
             this.Lifes--;
             this.invincibility = true;
@@ -211,15 +224,29 @@ public class Player extends Unidad{
 
     public void reSpawn(){
         this.resistance = 2;
-        dying = false;
-        invincibility = false;
-        timer = 0;
-        try {
-            this.sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        this.dying = false;
+        this.invincibility = false;
+        this.timer = 0;
+        this.powerUps = new MyStack();
+        setSprite(0);
+    }
+
+    public void setSprite(int type){
+        if (type == 0){
+            try {
+                this.sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            try {
+                this.sprite = ImageIO.read(getClass().getResourceAsStream("/explosion.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
+
 
     public void PushPowerUp(PowerUp powerUp){
         this.powerUps.addFirst(powerUp);

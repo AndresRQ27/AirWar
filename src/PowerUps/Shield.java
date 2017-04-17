@@ -21,14 +21,11 @@ public class Shield extends PowerUp {
     @Override
     public void Use() {
         this.game.player.invincibility = true;
+        this.game.player.shield = true;
         try {
             this.game.player.sprite = ImageIO.read(getClass().getResourceAsStream("/shield.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void Push(){
-
     }
 }

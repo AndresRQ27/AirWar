@@ -13,13 +13,26 @@ public class Nivel {
     public int posX;
     public int posY;
     public int movilidad;
+    public int nivel;
 
-    public Nivel (int posX, int posY){
-        this.posX = posX;
-        this.posY = posY;
+    public Nivel (){
+        this.posX = 0;
+        this.posY = -3840;
         this.movilidad = 1;
+        this.nivel = 1;
         try {
-            this.fondo = ImageIO.read(getClass().getResourceAsStream("/background1.png"));
+            this.fondo = ImageIO.read(getClass().getResourceAsStream("/background" + nivel + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setNivel(int nivel){
+        this.posX = 0;
+        this.posY = -3840;
+        this.nivel = nivel;
+        try {
+            this.fondo = ImageIO.read(getClass().getResourceAsStream("/background" + nivel + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,5 +44,8 @@ public class Nivel {
 
     public void move(){
         posY += movilidad;
+        if (posY == 0){
+            posY = -3840;
+        }
     }
 }
