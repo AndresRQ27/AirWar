@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sound/Prueba.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sound/Sounds.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Sound/Prueba.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Bullet.wav" afterPath="$PROJECT_DIR$/resources/Bullet.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Explosion.wav" afterPath="$PROJECT_DIR$/resources/Explosion.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Laser.wav" afterPath="$PROJECT_DIR$/resources/Laser.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Missile.wav" afterPath="$PROJECT_DIR$/resources/Missile.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Shield.wav" afterPath="$PROJECT_DIR$/resources/Shield.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player/Player.java" afterPath="$PROJECT_DIR$/src/Player/Player.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,16 +67,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Prueba.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sound/Prueba.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -722,7 +705,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492411551029</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Se puso sonido al jugador xD">
+      <created>1492418265984</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1492418265984</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -739,7 +729,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -756,7 +746,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969651" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -812,7 +802,8 @@
     <MESSAGE value="Enemigos generados usando enum" />
     <MESSAGE value="Enemigos generados usando enum&#10;Algunos cambios recomendados por java en el código" />
     <MESSAGE value="modificación del power up shield para que ahora dure 500 updates (10 segundos) en lugar de ser infinito.&#10;Hice un metodo en nivel llamado setNivel que recibe un int indicador del nivel, y con eso se cambia la imagen del fondo." />
-    <option name="LAST_COMMIT_MESSAGE" value="modificación del power up shield para que ahora dure 500 updates (10 segundos) en lugar de ser infinito.&#10;Hice un metodo en nivel llamado setNivel que recibe un int indicador del nivel, y con eso se cambia la imagen del fondo." />
+    <MESSAGE value="Se puso sonido al jugador xD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se puso sonido al jugador xD" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
