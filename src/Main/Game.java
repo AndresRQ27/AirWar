@@ -87,18 +87,18 @@ public class Game extends JPanel{
     }
 
     private void updateEnemiesInScreen(){
-        if (screenQueue.getlength()<4){
+        if (screenQueue.getlength()<5){
 
             Node<Aircraft.Enemy> planes = planesQueue.getHead();
             Node<Aircraft.Enemy> turret = turretQueue.getHead();
 
-            if (numplanes >= 5){
+            if (numplanes >= 5 && turret != null){
                 screenQueue.enqueue(turret.getObject());
                 turretQueue.dequeue();
                 numplanes = 0;
 
             } else {
-                while (planes != null && screenQueue.getlength() < 3) {
+                while (planes != null && screenQueue.getlength() < 4) {
                     screenQueue.enqueue(planes.getObject());
                     planes = planes.getNext();
                     planesQueue.dequeue();
