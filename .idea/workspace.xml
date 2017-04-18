@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/boss.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" afterPath="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/EnemyTypes.java" afterPath="$PROJECT_DIR$/src/Aircraft/EnemyTypes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Unidad.java" afterPath="$PROJECT_DIR$/src/Aircraft/Unidad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/AbstractLinkedList.java" afterPath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/AbstractLinkedList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/MyQueue.java" afterPath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/MyQueue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/MyStack.java" afterPath="$PROJECT_DIR$/src/DataStructures/MyLinkedList/MyStack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Game.java" afterPath="$PROJECT_DIR$/src/Main/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Nivel.java" afterPath="$PROJECT_DIR$/src/Main/Nivel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player/Player.java" afterPath="$PROJECT_DIR$/src/Player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PowerUps/PowerUp.java" afterPath="$PROJECT_DIR$/src/PowerUps/PowerUp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Projectiles/Bullet.java" afterPath="$PROJECT_DIR$/src/Projectiles/Bullet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Projectiles/Laser.java" afterPath="$PROJECT_DIR$/src/Projectiles/Laser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Projectiles/Missile.java" afterPath="$PROJECT_DIR$/src/Projectiles/Missile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Projectiles/Projectile.java" afterPath="$PROJECT_DIR$/src/Projectiles/Projectile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sound/Sounds.java" afterPath="$PROJECT_DIR$/src/Sound/Sounds.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -742,7 +726,7 @@
       <workItem from="1492280156542" duration="18000" />
       <workItem from="1492280230113" duration="3735000" />
       <workItem from="1492297984089" duration="4793000" />
-      <workItem from="1492475721023" duration="11641000" />
+      <workItem from="1492475721023" duration="11696000" />
     </task>
     <task id="LOCAL-00001" summary="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves">
       <created>1490643158752</created>
@@ -807,11 +791,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492480030789</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Creación de la clase Boss, que dispara dos rashos laser&#10;Sugerencias del IDE implementadas">
+      <created>1492491643005</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1492491643005</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35557000" />
+    <option name="totallyTimeSpent" value="35612000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -872,7 +863,8 @@
     <MESSAGE value="Fixed Bugs :v" />
     <MESSAGE value="Implementación de tipo Enum a los projectiles y los los enemigos (se usaban strings)&#10;Reducción del tamaño de hitbox de las unidades en 10 pixeles para que sí se vea un choque" />
     <MESSAGE value="Implementación de tipo Enum a los projectiles y los los enemigos (se usaban strings)&#10;Reducción del tamaño de hitbox de las unidades en 10 pixeles para que sí se vea un choque&#10;Según las recomendaciones del IDE:&#10;   Privatización de algunos parámetros y métodos&#10;   Métodos cambiados a private-package (se les quita el public de la declaración)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementación de tipo Enum a los projectiles y los los enemigos (se usaban strings)&#10;Reducción del tamaño de hitbox de las unidades en 10 pixeles para que sí se vea un choque&#10;Según las recomendaciones del IDE:&#10;   Privatización de algunos parámetros y métodos&#10;   Métodos cambiados a private-package (se les quita el public de la declaración)" />
+    <MESSAGE value="Creación de la clase Boss, que dispara dos rashos laser&#10;Sugerencias del IDE implementadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creación de la clase Boss, que dispara dos rashos laser&#10;Sugerencias del IDE implementadas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
