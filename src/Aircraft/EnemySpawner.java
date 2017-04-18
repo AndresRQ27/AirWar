@@ -24,6 +24,9 @@ public class EnemySpawner {
             case KAMIKAZE:
                 return new Kamikaze(game,player,x,y,power);
 
+            case BOSS:
+                return new Boss(game,player);
+
             default:
                 throw new Exception("Unknown Enemy Type");
         }

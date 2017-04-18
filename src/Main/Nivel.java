@@ -8,12 +8,12 @@ import java.io.IOException;
 /**
  * Created by Cristian44 on 14/4/2017.
  */
-public class Nivel {
-    public BufferedImage fondo;
-    public int posX;
-    public int posY;
-    public int movilidad;
-    public int nivel;
+class Nivel {
+    private BufferedImage fondo;
+    private int posX;
+    private int posY;
+    private final int movilidad;
+    private int nivel;
 
     public Nivel (){
         this.posX = 0;

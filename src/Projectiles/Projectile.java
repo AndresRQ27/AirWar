@@ -9,15 +9,15 @@ import java.awt.image.BufferedImage;
  * Created by Cristian44 on 27/3/2017.
  */
 public abstract class Projectile {
-    public int posX;
-    public int posY;
+    int posX;
+    int posY;
     public int attack;
-    public BufferedImage sprite;
-    public int movilidadY;
+    BufferedImage sprite;
+    int movilidadY;
     public boolean alive;
-    public Game game;
-    public int width;
-    public int height;
+    Game game;
+    int width;
+    int height;
 
     public void moverProyectilJugador() {
         if (posY - movilidadY < 0) {
@@ -38,9 +38,8 @@ public abstract class Projectile {
     }
 
     public void paint(Graphics2D g) {
-        if (alive == true) {
+        if (alive) {
             g.drawImage(sprite, posX, posY, null);
-        } else {
         }
     }
 

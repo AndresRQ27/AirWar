@@ -2,6 +2,7 @@ package Main;
 
 import Aircraft.EnemySpawner;
 import Aircraft.EnemiesList;
+import Aircraft.EnemyTypes;
 import DataStructures.MyLinkedList.MyQueue;
 import DataStructures.MyLinkedList.Node;
 import Player.Player;
@@ -23,17 +24,19 @@ public class Game extends JPanel{
 
     public final int WIDTH = 640;
     public final int HEIGHT = 640;
-    public Player player = new Player(this);
-    public MyQueue screenQueue = new MyQueue();
-    private MyQueue planesQueue = new MyQueue();
-    private MyQueue turretQueue = new MyQueue();
+    public final Player player = new Player(this);
 
-    private Nivel nivel = new Nivel();
+    public final MyQueue screenQueue = new MyQueue();
+    private final MyQueue planesQueue = new MyQueue();
+    private final MyQueue turretQueue = new MyQueue();
+    private final MyQueue bossQueue = new MyQueue();
+
+    private final Nivel nivel = new Nivel();
     private static int Lifes;
     private static int score;
 
 
-    public Game() {
+    private Game() {
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -104,6 +107,14 @@ public class Game extends JPanel{
                     planesQueue.dequeue();
                     numplanes++;
                 }
+
+                if (planes == null && screenQueue.getlength() == 0){
+                    Node<Aircraft.Enemy> boss = bossQueue.getHead();
+                    if (boss != null) {
+                        screenQueue.enqueue(boss.getObject());
+                        bossQueue.dequeue();
+                    }
+                }
             }
         }
     }
@@ -149,6 +160,13 @@ public class Game extends JPanel{
                 e.printStackTrace();
             }
             turrets--;
+        }
+
+        //BOSS
+        try {
+            bossQueue.enqueue(EnemySpawner.createEnemy(EnemyTypes.BOSS, this, player, 0, 0, 0));
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 

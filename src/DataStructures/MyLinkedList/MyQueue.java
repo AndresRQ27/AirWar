@@ -7,7 +7,7 @@ package DataStructures.MyLinkedList;
  */
 public class MyQueue<T> extends SimpleLinkedList{
 
-    public T peek(){
+    private T peek(){
         return (T) head.getObject();
     }
 

@@ -9,8 +9,8 @@ import java.io.IOException;
 /**
  * Created by Cristian44 on 27/3/2017.
  */
-public class Bullet extends Projectile {
-    public Player player;
+class Bullet extends Projectile {
+    private final Player player;
 
     public Bullet(Game game, Player player, int x, int y, int source){
         this.game = game;

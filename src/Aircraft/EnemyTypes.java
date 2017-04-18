@@ -6,5 +6,5 @@ package Aircraft;
  * Aircraft
  */
 public enum EnemyTypes {
-    BOMBER, JET, KAMIKAZE, TURRET, MISSILETURRET
+    BOMBER, JET, KAMIKAZE, TURRET, MISSILETURRET, BOSS
 }

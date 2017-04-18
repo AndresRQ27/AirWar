@@ -23,13 +23,12 @@ import java.io.IOException;
  */
 public class Player extends Unidad{
     private boolean W = false,A = false,S = false,D = false;
-    private int movilidadX;
     public int Lifes;
     public boolean invincibility;
     private boolean dying;
     private int timer;
     private int shieldTimer;
-    public SimpleLinkedList projectiles;
+    public final SimpleLinkedList projectiles;
     private MyStack powerUps;
     public int score;
     public boolean shield;
@@ -91,6 +90,7 @@ public class Player extends Unidad{
         }else {
             movilidadY = 0;
         }
+        int movilidadX;
         if (A){
             movilidadX = -3;
         }else if (D){
@@ -243,7 +243,7 @@ public class Player extends Unidad{
         setSprite(0);
     }
 
-    public void setSprite(int type){
+    private void setSprite(int type){
         if (type == 0){
             try {
                 this.sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
