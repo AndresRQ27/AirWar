@@ -1,11 +1,13 @@
 package Main;
 
+import Aircraft.Enemy;
 import Aircraft.EnemySpawner;
 import Aircraft.EnemiesList;
 import Aircraft.EnemyTypes;
 import DataStructures.MyLinkedList.MyQueue;
 import DataStructures.MyLinkedList.Node;
 import Player.Player;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,16 +26,27 @@ public class Game extends JPanel{
 
     public final int WIDTH = 640;
     public final int HEIGHT = 640;
-    public final Player player = new Player(this);
+    public Player player = new Player(this);
 
-    public final MyQueue screenQueue = new MyQueue();
-    private final MyQueue planesQueue = new MyQueue();
-    private final MyQueue turretQueue = new MyQueue();
-    private final MyQueue bossQueue = new MyQueue();
+    public MyQueue screenQueue = new MyQueue();
+    private MyQueue planesQueue = new MyQueue();
+    private MyQueue turretQueue = new MyQueue();
+    private MyQueue bossQueue = new MyQueue();
 
-    private final Nivel nivel = new Nivel();
-    private static int Lifes;
+    private int numEnemies = 3;
+    public int stage = 1;
+    public final int finalStage = 2;
+    private Level level = new Level(stage);
+
+    private static int Lives;
     private static int score;
+
+    public GameStates State = GameStates.MENU;
+    public Menu menuScreen;
+    public GameOver gameOverScreen;
+    public Help helpScreen;
+    public ChangeLevel changeLevel;
+    public GameComplete gameComplete;
 
 
     private Game() {
@@ -50,15 +63,60 @@ public class Game extends JPanel{
             public void keyPressed(KeyEvent e) {
                 player.keyPressed(e);
             }});
+        addMouseListener(new MouseInput(this));
         setFocusable(true);
-        //Cambiar el generador de enemigos por 25*X donde X es el nivel
-        generateEnemiesQueue(50);
+
+        generateEnemiesQueue(25 * this.stage);
+        menuScreen = new Menu(this);
+        gameOverScreen = new GameOver(this);
+        helpScreen = new Help(this);
+        changeLevel = new ChangeLevel(this);
+        gameComplete = new GameComplete(this);
+    }
+
+    public void changeLevel(){
+        this.stage++;
+        changeLevel = new ChangeLevel(this);
+        this.player.posX =WIDTH/2 - player.LADOSPRITE/2;
+        this.player.posY = HEIGHT - 120;
+        this.State = GameStates.CHANGINGLEVEL;
+        this.level = new Level(this.stage);
+        this.screenQueue = new MyQueue();
+        this.planesQueue = new MyQueue();
+        this.turretQueue = new MyQueue();
+        this.bossQueue = new MyQueue();
+        if (stage < 3){
+            this.numEnemies = 3;
+        }else if (stage < 6){
+            this.numEnemies = 5;
+        }else if (stage <= 10){
+            this.numEnemies = 7;
+        }
+        generateEnemiesQueue(25 * stage);
+    }
+
+    private void restartGame(){
+        this.player = new Player(this);
+        this.stage = 1;
+        this.level = new Level(stage);
+        changeLevel = new ChangeLevel(this);
+        this.screenQueue = new MyQueue();
+        this.planesQueue = new MyQueue();
+        this.turretQueue = new MyQueue();
+        this.bossQueue = new MyQueue();
+        generateEnemiesQueue(25 * stage);
+    }
+
+    public void gameComplete(){
+        changeLevel = new ChangeLevel(this);
+        this.State = GameStates.GAMECOMPLETE;
+        restartGame();
     }
 
     private void update(){
-        Lifes = player.Lifes;
+        Lives = player.Lifes;
         score = player.score;
-        nivel.move();
+        level.move();
         player.update();
         updateEnemies();
     }
@@ -90,18 +148,18 @@ public class Game extends JPanel{
     }
 
     private void updateEnemiesInScreen(){
-        if (screenQueue.getlength()<5){
+        if (screenQueue.getlength()<numEnemies){
 
             Node<Aircraft.Enemy> planes = planesQueue.getHead();
             Node<Aircraft.Enemy> turret = turretQueue.getHead();
 
-            if (numplanes >= 5 && turret != null){
+            if (numplanes >= numEnemies && turret != null){
                 screenQueue.enqueue(turret.getObject());
                 turretQueue.dequeue();
                 numplanes = 0;
 
             } else {
-                while (planes != null && screenQueue.getlength() < 4) {
+                while (planes != null && screenQueue.getlength() < numEnemies-1) {
                     screenQueue.enqueue(planes.getObject());
                     planes = planes.getNext();
                     planesQueue.dequeue();
@@ -119,27 +177,39 @@ public class Game extends JPanel{
         }
     }
 
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-        nivel.paint(g2d);
-        player.paint(g2d);
-        player.paintProjectiles(g2d);
-        if (screenQueue != null){
-            Node<Aircraft.Enemy> current = screenQueue.getHead();
-            while (current != null) {
-                current.getObject().paint(g2d);
-                current.getObject().paintProjectiles(g2d);
-                current = current.getNext();
+        if (State == GameStates.MENU){
+            menuScreen.render(g2d);
+        }else if (State == GameStates.GAME) {
+            level.paint(g2d);
+            player.paint(g2d);
+            player.paintProjectiles(g2d);
+            if (screenQueue != null) {
+                Node<Enemy> current = screenQueue.getHead();
+                while (current != null) {
+                    current.getObject().paint(g2d);
+                    current.getObject().paintProjectiles(g2d);
+                    current = current.getNext();
+                }
             }
+        }else if (State == GameStates.GAMEOVER){
+            gameOverScreen.render(g2d);
+        }else if(State == GameStates.HELP) {
+            helpScreen.render(g2d);
+        }else if (State == GameStates.CHANGINGLEVEL){
+            changeLevel.render(g2d);
+        }else if (State == GameStates.GAMECOMPLETE){
+            gameComplete.render(g2d);
         }
     }
 
-    private void generateEnemiesQueue(int cantidad){
-
-        double planes = 3*cantidad/4;
-        double turrets = cantidad/4 + 1;
+    private void generateEnemiesQueue(int number){
+        double planes = 3*number/4;
+        double turrets = number/4 + 1;
         new EnemiesList();
 
         //Aviones
@@ -178,14 +248,24 @@ public class Game extends JPanel{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        int timer = 0;
 
         while (true) {
-
-            frame.setTitle("Air Wars || Vidas: " + Lifes + " || Score: " + score + " || Escudos: " + Player.numShields);
-            game.update();
-            game.updateEnemiesInScreen();
+            if (game.State == GameStates.GAME) {
+                frame.setTitle("Air Wars || Nivel:" + game.stage+ "|| Vidas: " + Lives + " || Score: " + score + " || Escudos: " + Player.numShields);
+                game.update();
+                game.updateEnemiesInScreen();
+            }else if (game.State == GameStates.GAMEOVER){
+                frame.setTitle("Air Wars");
+                game.restartGame();
+            }else if (game.State == GameStates.CHANGINGLEVEL){
+                timer++;
+                if (timer>300){
+                    game.State = GameStates.GAME;
+                    timer = 0;
+                }
+            }
             game.repaint();
-
             try {
                 Thread.sleep(15);
             } catch (InterruptedException e) {

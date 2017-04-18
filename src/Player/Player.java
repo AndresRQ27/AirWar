@@ -2,6 +2,7 @@ package Player;
 
 import Aircraft.Enemy;
 import DataStructures.MyLinkedList.MyStack;
+import Main.GameStates;
 import PowerUps.PowerUp;
 import PowerUps.Shield;
 import Projectiles.Projectile;
@@ -236,6 +237,7 @@ public class Player extends Unidad{
             this.invincibility = true;
         }else{
             destroy();
+            game.State = GameStates.GAMEOVER;
         }
         numShields = 0;
     }
@@ -246,6 +248,7 @@ public class Player extends Unidad{
         this.invincibility = false;
         this.timer = 0;
         this.powerUps = new MyStack();
+        this.ammunition = ProjectileTypes.BULLET;
         setSprite(0);
     }
 

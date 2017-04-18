@@ -3,6 +3,7 @@ package Aircraft;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import Main.Game;
+import Main.GameStates;
 import Player.Player;
 import Projectiles.Projectile;
 import Projectiles.ProjectileFactory;
@@ -140,5 +141,15 @@ public class Boss extends Enemy {
             movimientoReverso = true;
         if (posX == 0)
             movimientoReverso = false;
+    }
+    @Override
+    public  void destroy(){
+        super.destroy();
+        if (game.stage < game.finalStage){
+            game.changeLevel();
+        }else{
+            game.gameComplete();
+        }
+
     }
 }

@@ -8,35 +8,25 @@ import java.io.IOException;
 /**
  * Created by Cristian44 on 14/4/2017.
  */
-class Nivel {
+class Level {
     private BufferedImage fondo;
     private int posX;
     private int posY;
     private final int movilidad;
-    private int nivel;
+    private int level;
 
-    public Nivel (){
+    public Level(int level){
         this.posX = 0;
         this.posY = -3840;
         this.movilidad = 1;
-        this.nivel = 1;
+        this.level = level;
         try {
-            this.fondo = ImageIO.read(getClass().getResourceAsStream("/background" + nivel + ".png"));
+            this.fondo = ImageIO.read(getClass().getResourceAsStream("/background" + this.level + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setNivel(int nivel){
-        this.posX = 0;
-        this.posY = -3840;
-        this.nivel = nivel;
-        try {
-            this.fondo = ImageIO.read(getClass().getResourceAsStream("/background" + nivel + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void paint(Graphics2D g){
         g.drawImage(fondo,posX,posY,null);

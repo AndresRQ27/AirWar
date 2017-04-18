@@ -25,7 +25,7 @@ public abstract class Unidad {
     public int movilidadY;
     protected int resistance;
     public BufferedImage sprite;
-    protected static final int LADOSPRITE = 64;
+    public static final int LADOSPRITE = 64;
     public int posX;
     public int posY;
     public boolean alive;
