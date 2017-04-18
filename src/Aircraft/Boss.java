@@ -25,6 +25,8 @@ public class Boss extends Enemy {
      */
     private final int movilidadX;
     private boolean movimientoReverso;
+    private int ancho;
+    private int alto;
     public SimpleLinkedList projectiles2 = new SimpleLinkedList();
 
     //EL TAMAÑO DEL BOSS DE DE ALTO: 205 Y ANCHO: 308
@@ -53,6 +55,8 @@ public class Boss extends Enemy {
         this.scoreValue = 2000;
         this.projectiles = new SimpleLinkedList();
         this.movimientoReverso = false;
+        this.alto = 205;
+        this.ancho = 308;
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/boss.png"));
         } catch (IOException e) {
@@ -63,7 +67,7 @@ public class Boss extends Enemy {
     @Override
     public Rectangle getBounds() {
         if (alive) {
-            return new Rectangle(posX, posY, 308, 215/3);
+            return new Rectangle(posX, posY, this.ancho, (this.alto+10)/3);
         }else{
             return new Rectangle(posX,posY,0,0);
         }
@@ -72,8 +76,8 @@ public class Boss extends Enemy {
     @Override
     public void shoot() {
         try {
-            projectiles.addFirst(ProjectileFactory.getProjectile(ammunition,game,player,posX+308/4,145,1));
-            projectiles2.addFirst(ProjectileFactory.getProjectile(ammunition,game,player,posX+3*308/4,145,1));
+            projectiles.addFirst(ProjectileFactory.getProjectile(ammunition,game,player,posX+(this.ancho)/4,(this.alto-60),1));
+            projectiles2.addFirst(ProjectileFactory.getProjectile(ammunition,game,player,posX+3*(this.ancho)/4,(this.alto-60),1));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,11 +132,11 @@ public class Boss extends Enemy {
             }
         }
 
-        if (posX < (game.WIDTH - 308) && !movimientoReverso)
+        if (posX < (game.WIDTH - this.ancho) && !movimientoReverso)
             posX += movilidadX;
         if (posX > 0 && movimientoReverso)
             posX -= movilidadX;
-        if (posX == (game.WIDTH - 308))
+        if (posX == (game.WIDTH - this.ancho))
             movimientoReverso = true;
         if (posX == 0)
             movimientoReverso = false;
