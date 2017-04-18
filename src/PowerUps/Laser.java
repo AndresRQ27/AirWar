@@ -1,6 +1,7 @@
 package PowerUps;
 
 import Main.Game;
+import Projectiles.ProjectileTypes;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.io.IOException;
  * Created by Cristian44 on 15/4/2017.
  */
 public class Laser extends PowerUp {
-    public Laser(Game game){
+    Laser(Game game){
         this.game = game;
         try {
             this.sprite = ImageIO.read(getClass().getResourceAsStream("/PowerUpLaser.png"));
@@ -20,6 +21,6 @@ public class Laser extends PowerUp {
 
     @Override
     public void Use(){
-        this.game.player.ammunition = 3;
+        this.game.player.ammunition = ProjectileTypes.LASER;
     }
 }

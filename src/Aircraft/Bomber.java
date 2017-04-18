@@ -4,6 +4,7 @@ import DataStructures.MyLinkedList.SimpleLinkedList;
 import Player.Player;
 import Main.Game;
 import PowerUps.PowerUpFactory;
+import Projectiles.ProjectileTypes;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -11,9 +12,9 @@ import java.io.IOException;
 /**
  * Created by Cristian44 on 12/4/2017.
  */
-public class Bomber extends Enemy {
+class Bomber extends Enemy {
 
-    public Bomber (Game game, Player player, int x, int y, int power){
+    Bomber (Game game, Player player, int x, int y, int power){
         this.game = game;
         this.player = player;
         this.posX = x;
@@ -21,7 +22,7 @@ public class Bomber extends Enemy {
         this.resistance = 3;
         this.movilidadY = 2;
         this.alive = true;
-        this.ammunition = 2;
+        this.ammunition = ProjectileTypes.MISSILE;
         this.timer = 0;
         this.dying = false;
         this.isEvil = true;

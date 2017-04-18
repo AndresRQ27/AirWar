@@ -15,11 +15,11 @@ import java.io.IOException;
  * Created by Cristian44 on 12/4/2017.
  */
 public abstract class Enemy extends Unidad {
-    public Player player;
+    Player player;
     public SimpleLinkedList projectiles;
     public PowerUp powerUp;
-    public int timer;
-    public int scoreValue;
+    int timer;
+    int scoreValue;
     public boolean dying;
     public boolean isPowerUp;
     public boolean isEvil;
@@ -29,7 +29,7 @@ public abstract class Enemy extends Unidad {
      */
     @Override
     public void update(){
-        if (alive == true && isEvil == true){
+        if (alive && isEvil){
             if(posY % 150 == 0){
                 shoot();
             }
@@ -43,12 +43,12 @@ public abstract class Enemy extends Unidad {
         if (timer>10){
             destroy();
         }
-        if (dying == true && timer <= 10){
+        if (dying && timer <= 10){
             timer++;
         }
-        if (collision() && dying == false){
+        if (collision() && !dying){
             if(resistance <= 0){
-                if (isPowerUp == true){
+                if (isPowerUp){
                     isEvil = false;
                     generatePowerUp();
                 }else{
@@ -70,7 +70,7 @@ public abstract class Enemy extends Unidad {
             Node <Projectile> current = projectiles.getHead();
             while (current != null){
                 current.getObject().moveEnemyProjectile();
-                if (current.getObject().alive == true){
+                if (current.getObject().alive){
                     index++;
                 }else{
                     projectiles.removeInPosition(index);
@@ -96,7 +96,7 @@ public abstract class Enemy extends Unidad {
         if (player.projectiles != null) {
             Node<Projectile> current = player.projectiles.getHead();
             while (current != null) {
-                if (current.getObject().getBounds().intersects(getBounds()) && isEvil == true) {
+                if (current.getObject().getBounds().intersects(getBounds()) && isEvil) {
                     this.resistance -= current.getObject().attack;
                     current.getObject().destroy();
                     aux = true;
@@ -126,9 +126,9 @@ public abstract class Enemy extends Unidad {
             e.printStackTrace();
         }
     }
-    public void generatePowerUp(){
+    private void generatePowerUp(){
         player.score+=scoreValue;
-        if(isPowerUp == true){
+        if(isPowerUp){
             this.sprite = this.powerUp.sprite;
         }
     }

@@ -16,17 +16,17 @@ public class Kamikaze extends Enemy {
     /**
      * movilidadX es la aceleracion en el eje X
      */
-    int movilidadX;
+    private int movilidadX;
     /**
      *
-     * @param game
-     * @param player
+     * @param game parámetro del juego en el que está
+     * @param player jugador al que tiene que perseguir
      * @param x posicion en X
      * @param y posicion en Y
      * Es necesario asignar las movilidades en X y Y
      * y alive como true
      */
-    public Kamikaze(Game game,Player player,int x, int y, int power){
+    Kamikaze(Game game,Player player,int x, int y, int power){
         this.game = game;
         this.player = player;
         this.posX = x;
@@ -60,11 +60,8 @@ public class Kamikaze extends Enemy {
 
     @Override
     public void move(){
-        /**
-         * Los 2 primeros if son para que el kamikaze siga la posicion del jugador
-         **/
         super.move();
-        if (this.isEvil == true){
+        if (this.isEvil){
             if (posX + movilidadX < player.posX){
                 movilidadX = 3;
             }

@@ -1,7 +1,7 @@
 package Main;
 
 import Aircraft.EnemySpawner;
-import Aircraft.Enemies;
+import Aircraft.EnemiesList;
 import DataStructures.MyLinkedList.MyQueue;
 import DataStructures.MyLinkedList.Node;
 import Player.Player;
@@ -29,8 +29,8 @@ public class Game extends JPanel{
     private MyQueue turretQueue = new MyQueue();
 
     private Nivel nivel = new Nivel();
-    public static int Lifes;
-    public static int score;
+    private static int Lifes;
+    private static int score;
 
 
     public Game() {
@@ -129,12 +129,12 @@ public class Game extends JPanel{
 
         double planes = 3*cantidad/4;
         double turrets = cantidad/4 + 1;
-        new Enemies();
+        new EnemiesList();
 
         //Aviones
         while ((int)planes > 0){
             try {
-                planesQueue.enqueue(EnemySpawner.createEnemy(Enemies.planesList.whatsIn(random.nextInt(Enemies.planesList.getlength())),this,player,64*(random.nextInt(8)+1),0, random.nextInt(100)));
+                planesQueue.enqueue(EnemySpawner.createEnemy(EnemiesList.planesList.whatsIn(random.nextInt(EnemiesList.planesList.getlength())),this,player,64*(random.nextInt(8)+1),0, random.nextInt(100)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -144,7 +144,7 @@ public class Game extends JPanel{
         //Torre
         while ((int)turrets > 0){
             try {
-                turretQueue.enqueue(EnemySpawner.createEnemy(Enemies.turretList.whatsIn(random.nextInt(Enemies.turretList.getlength())),this,player,64*(random.nextInt(8)+1),0, random.nextInt(100)));
+                turretQueue.enqueue(EnemySpawner.createEnemy(EnemiesList.turretList.whatsIn(random.nextInt(EnemiesList.turretList.getlength())),this,player,64*(random.nextInt(8)+1),0, random.nextInt(100)));
             } catch (Exception e) {
                 e.printStackTrace();
             }

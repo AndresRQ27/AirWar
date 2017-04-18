@@ -1,6 +1,7 @@
 package Aircraft;
 
 import Main.Game;
+import Projectiles.ProjectileTypes;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -22,14 +23,14 @@ public abstract class Unidad {
      * game sirve para que las unidades sepan los margenes de la pantalla
      */
     public int movilidadY;
-    public int resistance;
+    protected int resistance;
     public BufferedImage sprite;
-    public int LADOSPRITE = 64;
+    protected static int LADOSPRITE = 64;
     public int posX;
     public int posY;
     public boolean alive;
     public Game game;
-    public int ammunition;
+    public ProjectileTypes ammunition;
 
     public abstract void shoot();
 
@@ -53,10 +54,10 @@ public abstract class Unidad {
 
     /**
      * Cuando el alive = false, se eliminara el espacio de memoria donde se pintaba la unidad
-     * @param g
+     * @param g objeto Graphics2D
      */
     public void paint(Graphics2D g){
-        if (alive == true){
+        if (alive){
             g.drawImage(sprite,posX,posY,null);
         }
     }
@@ -68,16 +69,15 @@ public abstract class Unidad {
      * @return rectangle 64*64
      */
     public Rectangle getBounds() {
-        if (alive == true) {
-            return new Rectangle(posX, posY, LADOSPRITE, LADOSPRITE);
+        if (alive) {
+            return new Rectangle(posX, posY+10, LADOSPRITE, LADOSPRITE-10);
         }else{
             return new Rectangle(posX,posY,0,0);
         }
     }
 
     /**
-     * este metodo devulve un valor boolean indicando si el objeto esta en colision o no
-     * @return
+     * @return true si el objeto esta en colision, false de otra manera
      */
     public abstract boolean collision ();
 

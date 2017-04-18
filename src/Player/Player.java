@@ -10,6 +10,7 @@ import Aircraft.Unidad;
 import DataStructures.MyLinkedList.Node;
 import DataStructures.MyLinkedList.SimpleLinkedList;
 import Main.Game;
+import Projectiles.ProjectileTypes;
 import Sound.Sounds;
 
 import javax.imageio.ImageIO;
@@ -21,15 +22,15 @@ import java.io.IOException;
  * Created by Cristian44 on 27/3/2017.
  */
 public class Player extends Unidad{
-    boolean W = false,A = false,S = false,D = false;
-    public int movilidadX;
+    private boolean W = false,A = false,S = false,D = false;
+    private int movilidadX;
     public int Lifes;
     public boolean invincibility;
-    public boolean dying;
-    public int timer;
-    public int shieldTimer;
+    private boolean dying;
+    private int timer;
+    private int shieldTimer;
     public SimpleLinkedList projectiles;
-    public MyStack powerUps;
+    private MyStack powerUps;
     public int score;
     public boolean shield;
     public Sounds sounds;
@@ -41,7 +42,7 @@ public class Player extends Unidad{
         this.alive = true;
         this.Lifes = 3;
         this.resistance = 2;
-        this.ammunition = 1;
+        this.ammunition = ProjectileTypes.BULLET;
         this.invincibility = false;
         this.shield = false;
         this.dying = false;
@@ -63,7 +64,7 @@ public class Player extends Unidad{
             shieldTimer = 0;
             setSprite(0);
         }
-        if (shield == true){
+        if (shield){
             shieldTimer++;
         }
 
@@ -71,28 +72,28 @@ public class Player extends Unidad{
 
     @Override
     public  void move(){
-        if (this.dying == true){
+        if (this.dying){
             if (timer == 15){
                 reSpawn();
             }else{
                 timer++;
             }
         }
-        if (collision() && invincibility == false){
+        if (collision() && !invincibility){
             if(resistance <= 0){
                 blowup();
             }
         }
-        if (W == true){
+        if (W){
             movilidadY = -3;
-        }else if (S == true) {
+        }else if (S) {
             movilidadY = 3;
         }else {
             movilidadY = 0;
         }
-        if (A == true){
+        if (A){
             movilidadX = -3;
-        }else if (D == true){
+        }else if (D){
             movilidadX = 3;
         }else{
             movilidadX = 0;
@@ -111,7 +112,7 @@ public class Player extends Unidad{
             Node <Projectile> current = projectiles.getHead();
             while (current != null){
                 current.getObject().moverProyectilJugador();
-                if (current.getObject().alive == true){
+                if (current.getObject().alive){
                     index++;
                 }else{
                     projectiles.removeInPosition(index);
@@ -139,8 +140,8 @@ public class Player extends Unidad{
                     currentP = currentP.getNext();
                 }
                 if (current.getObject().getBounds().intersects(getBounds())) {
-                    if (current.getObject().dying == false){
-                        if (current.getObject().isPowerUp == true && current.getObject().isEvil == false){
+                    if (!current.getObject().dying){
+                        if (current.getObject().isPowerUp && !current.getObject().isEvil){
                             if (current.getObject().powerUp.getClass() == Shield.class){
                                 powerUps.push(current.getObject().powerUp);
                                 current.getObject().destroy();
@@ -212,16 +213,16 @@ public class Player extends Unidad{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (ammunition == 1){
+        if (ammunition == ProjectileTypes.BULLET){
             Sounds.BULLET.play();
-        } else if (ammunition == 2){
+        } else if (ammunition == ProjectileTypes.MISSILE){
             Sounds.MISSILE.play();
-        } else if (ammunition == 3){
+        } else if (ammunition == ProjectileTypes.LASER){
             Sounds.LASER.play();
         }
     }
 
-    public void blowup(){
+    private void blowup(){
         dying = true;
         setSprite(1);
         Sounds.EXPLOSION.play();
@@ -233,7 +234,7 @@ public class Player extends Unidad{
         }
     }
 
-    public void reSpawn(){
+    private void reSpawn(){
         this.resistance = 2;
         this.dying = false;
         this.invincibility = false;
