@@ -86,8 +86,8 @@ public class Boss extends Enemy {
             Node<Projectile> current = projectiles.getHead();
             Node<Projectile> current2 = projectiles2.getHead();
             while (current != null && current2 != null){
-                current.getObject().moveEnemyProjectile();
-                current2.getObject().moveEnemyProjectile();
+                current.getObject().moveBossProjectile(movimientoReverso, this);
+                current2.getObject().moveBossProjectile(movimientoReverso, this);
                 if (current.getObject().alive && current2.getObject().alive){
                     index++;
                 }else{

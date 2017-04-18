@@ -181,7 +181,7 @@ public class Game extends JPanel{
 
         while (true) {
 
-            frame.setTitle("Air Wars || Vidas: " + Lifes + " || Score: " + score);
+            frame.setTitle("Air Wars || Vidas: " + Lifes + " || Score: " + score + " || Escudos: " + Player.numShields);
             game.update();
             game.updateEnemiesInScreen();
             game.repaint();

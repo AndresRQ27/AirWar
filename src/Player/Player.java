@@ -30,6 +30,7 @@ public class Player extends Unidad{
     private int shieldTimer;
     public final SimpleLinkedList projectiles;
     private MyStack powerUps;
+    public static int numShields = 0;
     public int score;
     public boolean shield;
     public Sounds sounds;
@@ -144,6 +145,7 @@ public class Player extends Unidad{
                         if (current.getObject().isPowerUp && !current.getObject().isEvil){
                             if (current.getObject().powerUp.getClass() == Shield.class){
                                 powerUps.push(current.getObject().powerUp);
+                                numShields++;
                                 current.getObject().destroy();
                             }else{
                                 current.getObject().powerUp.Use();
@@ -190,6 +192,7 @@ public class Player extends Unidad{
                 current.getObject().Use();
                 Sounds.SHIELD.play();
                 powerUps.removeFirst();
+                numShields--;
             }
         }
     }
@@ -232,6 +235,7 @@ public class Player extends Unidad{
         }else{
             destroy();
         }
+        numShields = 0;
     }
 
     private void reSpawn(){
