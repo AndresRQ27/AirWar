@@ -144,8 +144,10 @@ public class Player extends Unidad{
                     if (!current.getObject().dying){
                         if (current.getObject().isPowerUp && !current.getObject().isEvil){
                             if (current.getObject().powerUp.getClass() == Shield.class){
-                                powerUps.push(current.getObject().powerUp);
-                                numShields++;
+                                if (numShields < 5) {
+                                    powerUps.push(current.getObject().powerUp);
+                                    numShields++;
+                                }
                                 current.getObject().destroy();
                             }else{
                                 current.getObject().powerUp.Use();

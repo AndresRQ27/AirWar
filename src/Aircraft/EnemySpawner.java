@@ -10,7 +10,7 @@ public class EnemySpawner {
     public static Enemy createEnemy(EnemyTypes enemy, Game game, Player player, int x, int y, int power) throws Exception{
         switch (enemy){
             case JET:
-                return new Jet(game,player,x,y,power);
+                return new Jet(game,player,x,y,85);
 
             case MISSILETURRET:
                 return new MissileTurret(game,player,x,y,power);

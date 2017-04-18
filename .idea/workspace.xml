@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Boss.java" afterPath="$PROJECT_DIR$/src/Aircraft/Boss.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Game.java" afterPath="$PROJECT_DIR$/src/Main/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" afterPath="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player/Player.java" afterPath="$PROJECT_DIR$/src/Player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Projectiles/Projectile.java" afterPath="$PROJECT_DIR$/src/Projectiles/Projectile.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +51,8 @@
       <file leaf-file-name="EnemySpawner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Aircraft/EnemySpawner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="27" column="45" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+            <state relative-caret-position="180">
+              <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,26 +70,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnemiesList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Aircraft/EnemiesList.java">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Player/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="12" column="68" lean-forward="false" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-              <folding />
+            <state relative-caret-position="340">
+              <caret line="146" column="48" lean-forward="false" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8032#8033#0" expanded="true" />
+                <element signature="e#8079#8080#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Player/Player.java">
+      <file leaf-file-name="PowerUp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PowerUps/PowerUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="237" column="23" lean-forward="false" selection-start-line="237" selection-start-column="23" selection-end-line="237" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7936#7937#0" expanded="true" />
-                <element signature="e#7983#7984#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -217,10 +215,10 @@
         <option value="$PROJECT_DIR$/src/Aircraft/Enemy.java" />
         <option value="$PROJECT_DIR$/src/DataStructures/MyLinkedList/AbstractLinkedList.java" />
         <option value="$PROJECT_DIR$/src/Aircraft/EnemyTypes.java" />
-        <option value="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" />
         <option value="$PROJECT_DIR$/src/Projectiles/Projectile.java" />
         <option value="$PROJECT_DIR$/src/Aircraft/Boss.java" />
         <option value="$PROJECT_DIR$/src/Main/Game.java" />
+        <option value="$PROJECT_DIR$/src/Aircraft/EnemySpawner.java" />
         <option value="$PROJECT_DIR$/src/Player/Player.java" />
       </list>
     </option>
@@ -730,7 +728,7 @@
       <workItem from="1492280156542" duration="18000" />
       <workItem from="1492280230113" duration="3735000" />
       <workItem from="1492297984089" duration="4793000" />
-      <workItem from="1492475721023" duration="14771000" />
+      <workItem from="1492475721023" duration="15536000" />
     </task>
     <task id="LOCAL-00001" summary="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves">
       <created>1490643158752</created>
@@ -809,11 +807,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492491659957</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Despliegue de cantidad de escudos en la barra de información&#10;Movimiento en X de las balas de jefe">
+      <created>1492498089046</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1492498089046</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38687000" />
+    <option name="totallyTimeSpent" value="39452000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -838,7 +843,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5030349" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32438478" sideWeight="0.4969651" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969651" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -875,7 +880,8 @@
     <MESSAGE value="Implementación de tipo Enum a los projectiles y los los enemigos (se usaban strings)&#10;Reducción del tamaño de hitbox de las unidades en 10 pixeles para que sí se vea un choque" />
     <MESSAGE value="Implementación de tipo Enum a los projectiles y los los enemigos (se usaban strings)&#10;Reducción del tamaño de hitbox de las unidades en 10 pixeles para que sí se vea un choque&#10;Según las recomendaciones del IDE:&#10;   Privatización de algunos parámetros y métodos&#10;   Métodos cambiados a private-package (se les quita el public de la declaración)" />
     <MESSAGE value="Creación de la clase Boss, que dispara dos rashos laser&#10;Sugerencias del IDE implementadas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creación de la clase Boss, que dispara dos rashos laser&#10;Sugerencias del IDE implementadas" />
+    <MESSAGE value="Despliegue de cantidad de escudos en la barra de información&#10;Movimiento en X de las balas de jefe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Despliegue de cantidad de escudos en la barra de información&#10;Movimiento en X de las balas de jefe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -888,13 +894,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Aircraft/Kamikaze.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -1142,16 +1141,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Aircraft/EnemySpawner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="27" column="45" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Aircraft/Unidad.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -1200,6 +1189,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PowerUps/PowerUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PowerUps/PowerUpFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -1208,14 +1205,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Player/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/Aircraft/EnemySpawner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="237" column="23" lean-forward="false" selection-start-line="237" selection-start-column="23" selection-end-line="237" selection-end-column="23" />
+        <state relative-caret-position="180">
+          <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7936#7937#0" expanded="true" />
-            <element signature="e#7983#7984#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="146" column="48" lean-forward="false" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8032#8033#0" expanded="true" />
+            <element signature="e#8079#8080#0" expanded="true" />
           </folding>
         </state>
       </provider>
