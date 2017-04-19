@@ -35,7 +35,7 @@ public class Game extends JPanel{
 
     private int numEnemies = 3;
     public int stage = 1;
-    public final int finalStage = 2;
+    public final int finalStage = 9;
     private Level level = new Level(stage);
 
     private static int Lives;
@@ -110,7 +110,7 @@ public class Game extends JPanel{
     public void gameComplete(){
         changeLevel = new ChangeLevel(this);
         this.State = GameStates.GAMECOMPLETE;
-        restartGame();
+        //restartGame();
     }
 
     private void update(){

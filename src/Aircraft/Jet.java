@@ -29,7 +29,7 @@ class Jet extends Enemy {
         this.scoreValue = 100;
         this.projectiles = new SimpleLinkedList();
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/jet.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/jet.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

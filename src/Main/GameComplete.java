@@ -16,8 +16,8 @@ public class GameComplete {
     public GameComplete(Game game) {
         this.game = game;
         try {
-            this.button = ImageIO.read(getClass().getResourceAsStream("/button.png"));
-            this.background = ImageIO.read(getClass().getResourceAsStream("/MissionComplete.png"));
+            this.button = ImageIO.read(getClass().getResourceAsStream("/Screens/button.png"));
+            this.background = ImageIO.read(getClass().getResourceAsStream("/Screens/MissionComplete.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -24,14 +24,14 @@ class Missile extends Projectile {
         if (source == 0){
             this.attack = 2;
             try {
-                sprite = ImageIO.read(getClass().getResourceAsStream("/missile.png"));
+                sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/missile.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{
             this.attack = 3;
             try {
-                sprite = ImageIO.read(getClass().getResourceAsStream("/missile2.png"));
+                sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/missile2.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }        }

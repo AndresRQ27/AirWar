@@ -1,5 +1,7 @@
 package Main;
 
+import Sound.Sounds;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -41,12 +43,22 @@ public class MouseInput implements MouseListener{
                 if (mx >= 640 / 3 + 100 && mx <= 640 / 3 + 200) {
                     //Play button pressed
                     game.State = GameStates.CHANGINGLEVEL;
+                    Sounds.BACKGROUND.loop();
                 }
             }
             if (my >= 350 && my <= 400) {
                 if (mx >= 640 / 3 + 100 && mx <= 640 / 3 + 200) {
                     //Help button pressed
                     game.State = GameStates.HELP;
+                }
+            }
+        }
+        if (game.State == GameStates.GAMECOMPLETE){
+            if (my >= 460 && my <= 510) {
+                if (mx >= 640 / 3 + 50 && mx <= 640 / 3 + 150) {
+                    //Play button pressed
+                    game.State = GameStates.MENU;
+
                 }
             }
         }

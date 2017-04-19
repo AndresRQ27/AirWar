@@ -23,7 +23,7 @@ class Laser extends Projectile {
         this.width = 10;
         this.height = 16;
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/laser.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/laser.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

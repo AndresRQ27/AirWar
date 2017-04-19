@@ -29,7 +29,7 @@ class Bomber extends Enemy {
         this.scoreValue = 300;
         this.projectiles = new SimpleLinkedList();
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/bomber.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/bomber.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

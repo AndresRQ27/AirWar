@@ -21,11 +21,11 @@ public class Help {
     public Help(Game game) {
         this.game = game;
         try {
-            this.shield = ImageIO.read(getClass().getResourceAsStream("/PowerUpShield.png"));
-            this.Missile = ImageIO.read(getClass().getResourceAsStream("/PowerUpMissile.png"));
-            this.Laser = ImageIO.read(getClass().getResourceAsStream("/PowerUpLaser.png"));
-            this.BackGround = ImageIO.read(getClass().getResourceAsStream("/backgroundMenu.png"));
-            this.button = ImageIO.read(getClass().getResourceAsStream("/button.png"));
+            this.shield = ImageIO.read(getClass().getResourceAsStream("/Sprites/PowerUpShield.png"));
+            this.Missile = ImageIO.read(getClass().getResourceAsStream("/Sprites/PowerUpMissile.png"));
+            this.Laser = ImageIO.read(getClass().getResourceAsStream("/Sprites/PowerUpLaser.png"));
+            this.BackGround = ImageIO.read(getClass().getResourceAsStream("/Screens/backgroundMenu.png"));
+            this.button = ImageIO.read(getClass().getResourceAsStream("/Screens/button.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -13,7 +13,7 @@ public class Missile extends PowerUp {
     Missile(Game game){
         this.game = game;
         try {
-            this.sprite = ImageIO.read(getClass().getResourceAsStream("/PowerUpMissile.png"));
+            this.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/PowerUpMissile.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

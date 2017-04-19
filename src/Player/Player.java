@@ -25,16 +25,17 @@ import java.io.IOException;
 public class Player extends Unidad{
     private boolean W = false,A = false,S = false,D = false;
     public int Lifes;
+    private int movilidadX;
     public boolean invincibility;
     private boolean dying;
     private int timer;
     private int shieldTimer;
-    public final SimpleLinkedList projectiles;
+    public SimpleLinkedList projectiles;
     private MyStack powerUps;
     public static int numShields = 0;
     public int score;
+    private int scoreAux;
     public boolean shield;
-    public Sounds sounds;
 
     public Player (Game game){
         this.game = game;
@@ -42,7 +43,6 @@ public class Player extends Unidad{
         this.posY = game.HEIGHT - 120;
         this.alive = true;
         this.Lifes = 3;
-        this.resistance = 2;
         this.ammunition = ProjectileTypes.BULLET;
         this.invincibility = false;
         this.shield = false;
@@ -50,6 +50,7 @@ public class Player extends Unidad{
         this.timer = 0;
         this.shieldTimer = 0;
         this.score = 0;
+        this.scoreAux = 10000;
         this.projectiles = new SimpleLinkedList();
         this.powerUps = new MyStack();
        setSprite(0);
@@ -57,9 +58,7 @@ public class Player extends Unidad{
 
     @Override
     public void update(){
-        move();
-        moveProjectile();
-        if(shieldTimer >= 500){
+        if(shieldTimer >= 400){
             invincibility = false;
             shield = false;
             shieldTimer = 0;
@@ -67,23 +66,25 @@ public class Player extends Unidad{
         }
         if (shield){
             shieldTimer++;
+        }if (this.score - this.scoreAux>0){
+            this.Lifes++;
+            this.scoreAux += 10000;
         }
-
+        move();
+        moveProjectile();
     }
 
     @Override
     public  void move(){
         if (this.dying){
-            if (timer == 15){
+            if (timer == 30){
                 reSpawn();
             }else{
                 timer++;
             }
         }
         if (collision() && !invincibility){
-            if(resistance <= 0){
-                blowup();
-            }
+            blowup();
         }
         if (W){
             movilidadY = -3;
@@ -92,7 +93,7 @@ public class Player extends Unidad{
         }else {
             movilidadY = 0;
         }
-        int movilidadX;
+
         if (A){
             movilidadX = -3;
         }else if (D){
@@ -127,14 +128,12 @@ public class Player extends Unidad{
     @Override
     public boolean collision() {
         boolean aux = false;
-
         Node <Enemy> current = game.screenQueue.getHead();
         while (current!=null) {
             if (current.getObject().projectiles != null) {
                 Node<Projectile> currentP = current.getObject().projectiles.getHead();
                 while (currentP != null) {
                     if (currentP.getObject().getBounds().intersects(getBounds())) {
-                        this.resistance -= currentP.getObject().attack;
                         currentP.getObject().destroy();
                         aux = true;
                         break;
@@ -156,9 +155,8 @@ public class Player extends Unidad{
                             }
                         }else{
                             current.getObject().blowup();
-                            blowup();
+                            aux = true;
                         }
-                        aux = true;
                     }
                 }
             }
@@ -179,36 +177,46 @@ public class Player extends Unidad{
     }
 
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W){
-            W = false;
-        }if (e.getKeyCode() == KeyEvent.VK_S) {
-            S = false;
-        }if (e.getKeyCode() == KeyEvent.VK_A){
-            A = false;
-        }if( e.getKeyCode() ==KeyEvent.VK_D) {
-            D = false;
-        }if (e.getKeyCode() == KeyEvent.VK_J){
-            shoot();
-        }if (e.getKeyCode() == KeyEvent.VK_SPACE){
-            if (powerUps.getHead() != null){
-                Node <PowerUp> current = powerUps.getHead();
-                current.getObject().Use();
-                Sounds.SHIELD.play();
-                powerUps.removeFirst();
-                numShields--;
+        if (alive) {
+            if (e.getKeyCode() == KeyEvent.VK_W) {
+                W = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                S = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_A) {
+                A = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_D) {
+                D = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_J) {
+                shoot();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                if (powerUps.getHead() != null) {
+                    Node<PowerUp> current = powerUps.getHead();
+                    current.getObject().Use();
+                    shieldTimer = 0;
+                    Sounds.SHIELD.play();
+                    powerUps.removeFirst();
+                    numShields--;
+                }
             }
         }
     }
 
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            W = true;
-        }else if (e.getKeyCode() == KeyEvent.VK_S) {
-            S = true;
-        }else if (e.getKeyCode() == KeyEvent.VK_A) {
-            A = true;
-        }else if (e.getKeyCode() ==KeyEvent.VK_D){
-            D = true;
+        if (alive) {
+            if (e.getKeyCode() == KeyEvent.VK_W) {
+                W = true;
+            } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                S = true;
+            } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                A = true;
+            } else if (e.getKeyCode() == KeyEvent.VK_D) {
+                D = true;
+            }
         }
     }
 
@@ -238,6 +246,8 @@ public class Player extends Unidad{
         }else{
             destroy();
             game.State = GameStates.GAMEOVER;
+            Sounds.BACKGROUND.stop();
+            Sounds.GAMEOVER.play();
         }
         numShields = 0;
     }
@@ -248,6 +258,7 @@ public class Player extends Unidad{
         this.invincibility = false;
         this.timer = 0;
         this.powerUps = new MyStack();
+        this.projectiles = new SimpleLinkedList();
         this.ammunition = ProjectileTypes.BULLET;
         setSprite(0);
     }
@@ -255,21 +266,16 @@ public class Player extends Unidad{
     private void setSprite(int type){
         if (type == 0){
             try {
-                this.sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
+                this.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/player.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{
             try {
-                this.sprite = ImageIO.read(getClass().getResourceAsStream("/explosion.png"));
+                this.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/explosion.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-
-    public void PushPowerUp(PowerUp powerUp){
-        this.powerUps.addFirst(powerUp);
     }
 }

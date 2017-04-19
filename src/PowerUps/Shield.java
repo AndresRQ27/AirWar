@@ -12,7 +12,7 @@ public class Shield extends PowerUp {
     public Shield(Game game){
         this.game = game;
         try {
-            this.sprite = ImageIO.read(getClass().getResourceAsStream("/PowerUpShield.png"));
+            this.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/PowerUpShield.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,7 +23,7 @@ public class Shield extends PowerUp {
         this.game.player.invincibility = true;
         this.game.player.shield = true;
         try {
-            this.game.player.sprite = ImageIO.read(getClass().getResourceAsStream("/shield.png"));
+            this.game.player.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/shield.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

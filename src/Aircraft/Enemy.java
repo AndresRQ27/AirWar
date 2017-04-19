@@ -49,7 +49,6 @@ public abstract class Enemy extends Unidad {
         if (collision() && !dying){
             if(resistance <= 0){
                 if (isPowerUp){
-                    isEvil = false;
                     generatePowerUp();
                 }else{
                     blowup();
@@ -121,15 +120,16 @@ public abstract class Enemy extends Unidad {
         dying = true;
         player.score+=scoreValue;
         try {
-            this.sprite = ImageIO.read(getClass().getResourceAsStream("/explosion.png"));
+            this.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/explosion.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     private void generatePowerUp(){
+        this.isEvil = false;
+        this.dying = false;
+        this.movilidadY = 2;
         player.score+=scoreValue;
-        if(isPowerUp){
-            this.sprite = this.powerUp.sprite;
-        }
+        this.sprite = this.powerUp.sprite;
     }
 }

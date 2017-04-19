@@ -8,6 +8,7 @@ import Player.Player;
 import Projectiles.Projectile;
 import Projectiles.ProjectileFactory;
 import Projectiles.ProjectileTypes;
+import Sound.Sounds;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -59,7 +60,7 @@ public class Boss extends Enemy {
         this.alto = 205;
         this.ancho = 308;
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/boss.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/boss.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,6 +150,8 @@ public class Boss extends Enemy {
             game.changeLevel();
         }else{
             game.gameComplete();
+            Sounds.BACKGROUND.stop();
+            Sounds.VICTORY.play();
         }
 
     }

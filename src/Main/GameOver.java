@@ -18,8 +18,8 @@ public class GameOver {
     public GameOver(Game game) {
         this.game = game;
         try {
-            this.button = ImageIO.read(getClass().getResourceAsStream("/button.png"));
-            this.GameOver = ImageIO.read(getClass().getResourceAsStream("/GameOver.png"));
+            this.button = ImageIO.read(getClass().getResourceAsStream("/Screens/button.png"));
+            this.GameOver = ImageIO.read(getClass().getResourceAsStream("/Screens/GameOver.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

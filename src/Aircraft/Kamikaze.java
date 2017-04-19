@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by Cristian44 on 23/3/2017.
  */
-public class Kamikaze extends Enemy {
+class Kamikaze extends Enemy {
     /**
      * movilidadX es la aceleracion en el eje X
      */
@@ -41,7 +41,7 @@ public class Kamikaze extends Enemy {
         this.scoreValue = 200;
         this.projectiles = new SimpleLinkedList();
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/kamikaze.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/kamikaze.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

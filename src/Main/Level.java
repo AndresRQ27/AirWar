@@ -21,7 +21,7 @@ class Level {
         this.movilidad = 1;
         this.level = level;
         try {
-            this.fondo = ImageIO.read(getClass().getResourceAsStream("/background" + this.level + ".png"));
+            this.fondo = ImageIO.read(getClass().getResourceAsStream("/Backgrounds/level_" + this.level + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

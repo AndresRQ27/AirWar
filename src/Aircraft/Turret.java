@@ -30,7 +30,7 @@ class Turret extends Enemy {
         this.projectiles = new SimpleLinkedList();
 
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/turret.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/turret.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

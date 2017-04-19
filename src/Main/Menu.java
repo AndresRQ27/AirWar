@@ -19,8 +19,8 @@ public class Menu extends JFrame {
     public Menu(Game game) {
         this.game = game;
         try {
-            this.button = ImageIO.read(getClass().getResourceAsStream("/button.png"));
-            this.BackGround = ImageIO.read(getClass().getResourceAsStream("/backgroundMenu.png"));
+            this.button = ImageIO.read(getClass().getResourceAsStream("/Screens/button.png"));
+            this.BackGround = ImageIO.read(getClass().getResourceAsStream("/Screens/backgroundMenu.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

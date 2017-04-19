@@ -13,7 +13,7 @@ public class Laser extends PowerUp {
     Laser(Game game){
         this.game = game;
         try {
-            this.sprite = ImageIO.read(getClass().getResourceAsStream("/PowerUpLaser.png"));
+            this.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/PowerUpLaser.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

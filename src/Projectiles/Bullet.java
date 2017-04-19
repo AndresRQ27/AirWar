@@ -24,14 +24,14 @@ class Bullet extends Projectile {
         if (source == 0){
             this.attack = 1;
             try {
-                sprite = ImageIO.read(getClass().getResourceAsStream("/bullet.png"));
+                sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/bullet.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{
             this.attack = 2;
             try {
-                sprite = ImageIO.read(getClass().getResourceAsStream("/bullet2.png"));
+                sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/bullet2.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
