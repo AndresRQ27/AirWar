@@ -20,7 +20,7 @@ public class ChangeLevel {
         g.fillRect(0,0,640,640);
         g.setFont(fnt1);
         g.setColor(Color.white);
-        g.drawString(levelScreen,game.HEIGHT/2, game.WIDTH/2);
+        g.drawString(levelScreen,game.WIDTH/2-30, game.HEIGHT/2);
 
     }
 }
