@@ -33,17 +33,20 @@ public class Menu extends JFrame {
         Font fnt0 = new Font("arial", Font.BOLD, 59);
         g.setFont(fnt0);
         g.setColor(Color.red);
-        g.drawString("AIR WAR", game.WIDTH / 3, 100);
+        g.drawString("AIR WAR", game.WIDTH / 2 - 130, 100);
 
 
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
-        g.drawImage(button, game.WIDTH / 3 + 100, 150, 100, 50, null);
-        g.drawString("Play", game.WIDTH / 3 + 119, 185);
-        g.drawImage(button, game.WIDTH / 3 + 100, 250, 100, 50, null);
-        g.drawString("Scores", game.WIDTH / 3 + 100, 285);
-        g.drawImage(button, game.WIDTH / 3 + 100, 350, 100, 50, null);
-        g.drawString("Help", game.WIDTH / 3 + 119, 385);
+        g.drawImage(button, game.WIDTH / 2 - 50, 150, 100, 50, null);
+        g.drawString("Play", game.WIDTH / 2 - 33, 185);
+        g.drawImage(button, game.WIDTH / 2 - 50, 250, 100, 50, null);
 
+        g.drawImage(button, game.WIDTH / 2 - 50, 350, 100, 50, null);
+        g.drawString("Help", game.WIDTH / 2 - 33, 385);
+
+        Font fnt2 = new Font("arial", Font.BOLD, 25);
+        g.setFont(fnt2);
+        g.drawString("Scores", game.WIDTH / 2 - 40, 285);
     }
 }

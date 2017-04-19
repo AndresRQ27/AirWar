@@ -53,8 +53,8 @@ public class Help {
         g.drawString("= Skill MISSILE", game.WIDTH/ 2 + 50, 290);
         g.drawImage(Laser, game.WIDTH / 2 -50, 350, 100, 50, null);
         g.drawString("= Skill LASER", game.WIDTH/ 2 + 50, 390);
-        g.drawImage(button, game.WIDTH / 3 + 100, 460, 100, 50, null);
-        g.drawString("Back", game.WIDTH / 3 + 115, 495);
+        g.drawImage(button, game.WIDTH / 2 - 50, 480, 100, 50, null);
+        g.drawString("Back", game.WIDTH / 2 - 35, 515);
 
 
     }

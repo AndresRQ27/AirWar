@@ -32,8 +32,8 @@ public class GameOver {
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
         g.setColor(Color.white);
-        g.drawImage(button, game.WIDTH / 3 + 100, 460, 100, 50, null);
-        g.drawString("Back", game.WIDTH / 3 + 115, 495);
+        g.drawImage(button, game.WIDTH / 2 - 50, 460, 100, 50, null);
+        g.drawString("Back", game.WIDTH / 2 - 35, 495);
 
     }
 }
