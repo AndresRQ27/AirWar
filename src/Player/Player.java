@@ -278,4 +278,8 @@ public class Player extends Unidad{
             }
         }
     }
+
+    public int getScore() {
+        return score;
+    }
 }

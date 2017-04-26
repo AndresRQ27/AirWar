@@ -7,6 +7,7 @@ import Aircraft.EnemyTypes;
 import DataStructures.MyLinkedList.MyQueue;
 import DataStructures.MyLinkedList.Node;
 import Player.Player;
+import Server.Server;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ import java.util.*;
 /**
  * Created by Cristian44 on 24/3/2017.
  */
-public class Game extends JPanel{
+public class Game extends JPanel {
 
     private static final Random random = new Random();
     private int numplanes;
@@ -249,6 +250,9 @@ public class Game extends JPanel{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         int timer = 0;
+        Server server = new Server("Hilo server", game.player);
+        server.start();
+
 
         while (true) {
             if (game.State == GameStates.GAME) {
