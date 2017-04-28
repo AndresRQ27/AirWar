@@ -151,7 +151,7 @@ public class Player extends Unidad{
             for (int i = 0; i <= Lifes; i++) {
                 this.blowup();
             }
-            System.out.print("Nice try smartass");
+            System.out.println("Nice try smartass");
         }
         return aux;
     }
