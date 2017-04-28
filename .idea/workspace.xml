@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="Jefe:&#10;   Balas no se mueven en X&#10;   Ambas armas funcionan&#10;   Ya no es un rayo laser">
+    <list default="true" id="b6a356b5-43af-46b1-a0e6-a34fa668821e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Aircraft/Boss.java" afterPath="$PROJECT_DIR$/src/Aircraft/Boss.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Game.java" afterPath="$PROJECT_DIR$/src/Main/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player/Player.java" afterPath="$PROJECT_DIR$/src/Player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Projectiles/Projectile.java" afterPath="$PROJECT_DIR$/src/Projectiles/Projectile.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -751,7 +747,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1490234523048</updated>
-      <workItem from="1493373892934" duration="1790000" />
+      <workItem from="1493373892934" duration="1813000" />
     </task>
     <task id="LOCAL-00001" summary="Modificaciones a la clase Unidad&#10;Creación de la clase kamikaze&#10;Creación de la clase jugador&#10;Creación de la clase principal Game&#10;Creación de una carpeta de recursos donde estan las imagenes de las naves">
       <created>1490643158752</created>
@@ -886,11 +882,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493374178436</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Jefe:&#10;   Balas no se mueven en X&#10;   Ambas armas funcionan&#10;   Ya no es un rayo laser">
+      <created>1493400121339</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1493400121339</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1790000" />
+    <option name="totallyTimeSpent" value="1813000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
