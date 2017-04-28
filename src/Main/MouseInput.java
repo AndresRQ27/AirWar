@@ -26,6 +26,7 @@ public class MouseInput implements MouseListener{
                 if(mx >= 640/2 - 50 && mx <= 640/2 + 50){
                     //Return from Game Over button pressed
                     game.State = GameStates.MENU;
+                    game.restartGame();
                 }
             }
         }
@@ -39,6 +40,7 @@ public class MouseInput implements MouseListener{
             }
         }
         if (game.State == GameStates.MENU) {
+            game.Write = false;
             if (my >= 150 && my <= 200) {
                 if (mx >= 640/2 - 50 && mx <= 640/2 + 50) {
                     //Play button pressed
@@ -46,6 +48,14 @@ public class MouseInput implements MouseListener{
                     Sounds.BACKGROUND.loop();
                 }
             }
+            if (my >= 260 && my <= 310) {
+                if (mx >= 640/2 - 50 && mx <= 640/2 + 50) {
+                    //Name button pressed
+                    game.Write = true;
+                }
+            }
+
+
             if (my >= 350 && my <= 400) {
                 if (mx >= 640/2 - 50 && mx <= 640/2 + 50) {
                     //Help button pressed
@@ -58,10 +68,12 @@ public class MouseInput implements MouseListener{
                 if (mx >= 640 / 3 + 50 && mx <= 640 / 3 + 150) {
                     //Play button pressed
                     game.State = GameStates.MENU;
+                    game.restartGame();
 
                 }
             }
         }
+
     }
 
     @Override

@@ -1,10 +1,14 @@
 package Main;
 
+import sun.java2d.loops.FillRect;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import javax.swing.JFrame;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 
 
 /**
@@ -36,17 +40,35 @@ public class Menu extends JFrame {
         g.drawString("AIR WAR", game.WIDTH / 2 - 130, 100);
 
 
+
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
         g.drawImage(button, game.WIDTH / 2 - 50, 150, 100, 50, null);
         g.drawString("Play", game.WIDTH / 2 - 33, 185);
-        g.drawImage(button, game.WIDTH / 2 - 50, 250, 100, 50, null);
+        g.drawString("Name", game.WIDTH / 2 - 45, 250);
+
 
         g.drawImage(button, game.WIDTH / 2 - 50, 350, 100, 50, null);
         g.drawString("Help", game.WIDTH / 2 - 33, 385);
 
-        Font fnt2 = new Font("arial", Font.BOLD, 25);
-        g.setFont(fnt2);
-        g.drawString("Scores", game.WIDTH / 2 - 40, 285);
+
+        g.setColor(Color.black);
+        Rectangle rect = new Rectangle(game.WIDTH / 2 -50,260,100,50);
+        g.setColor(Color.white);
+        g.fillRect(game.WIDTH / 2 -50,260,100,50);
+        g.draw(rect);
+
+        g.setColor(Color.black);
+        Font fnt3 = new Font("arial", Font.BOLD, 20);
+        g.setFont(fnt3);
+        g.drawString(game.nombre, game.WIDTH / 2 - 50,280);
+
     }
+
+
+
+
+
+
+
 }

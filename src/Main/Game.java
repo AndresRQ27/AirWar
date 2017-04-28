@@ -17,6 +17,8 @@ import java.awt.event.KeyListener;
 
 import java.util.*;
 
+
+
 /**
  * Created by Cristian44 on 24/3/2017.
  */
@@ -50,7 +52,13 @@ public class Game extends JPanel {
     public GameComplete gameComplete;
 
 
+    public static String nombre = "";
+    public boolean Write = false;
+
+
+
     private Game() {
+
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -58,11 +66,21 @@ public class Game extends JPanel {
 
             @Override
             public void keyReleased(KeyEvent e){
-                player.keyReleased(e);
+
+                if(State ==  GameStates.GAME ) {
+                    player.keyReleased(e);
+                }else if(State == GameStates.MENU && Write == true){
+                    nombre = nombre + e.getKeyChar();
+                }else{
+
+                }
+
             }
             @Override
             public void keyPressed(KeyEvent e) {
-                player.keyPressed(e);
+                if(State ==  GameStates.GAME ) {
+                    player.keyPressed(e);
+                }
             }});
         addMouseListener(new MouseInput(this));
         setFocusable(true);
@@ -96,7 +114,8 @@ public class Game extends JPanel {
         generateEnemiesQueue(25 * stage);
     }
 
-    private void restartGame(){
+    public void restartGame(){
+        this.nombre = "";
         this.player = new Player(this);
         this.stage = 1;
         this.level = new Level(stage);
@@ -111,7 +130,7 @@ public class Game extends JPanel {
     public void gameComplete(){
         changeLevel = new ChangeLevel(this);
         this.State = GameStates.GAMECOMPLETE;
-        //restartGame();
+
     }
 
     private void update(){
@@ -244,7 +263,10 @@ public class Game extends JPanel {
     public static void main (String [] args){
         JFrame frame = new JFrame("Air Wars");
         Game game = new Game();
+
+
         frame.add(game);
+
         frame.setSize(game.WIDTH, game.HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -256,12 +278,13 @@ public class Game extends JPanel {
 
         while (true) {
             if (game.State == GameStates.GAME) {
-                frame.setTitle("Air Wars || Nivel:" + game.stage+ "|| Vidas: " + Lives + " || Score: " + score + " || Escudos: " + Player.numShields);
+                frame.setTitle("Air Wars || Nivel:" + game.stage + " || Player: " + nombre+ " || Vidas: " + Lives + " || Score: " + score + " || Escudos: " + Player.numShields + "||");
                 game.update();
                 game.updateEnemiesInScreen();
-            }else if (game.State == GameStates.GAMEOVER){
+            }else if (game.State == GameStates.GAMEOVER) {
                 frame.setTitle("Air Wars");
-                game.restartGame();
+            } else if (game.State == GameStates.GAMECOMPLETE) {
+                frame.setTitle("Air Wars");
             }else if (game.State == GameStates.CHANGINGLEVEL){
                 timer++;
                 if (timer>300){
