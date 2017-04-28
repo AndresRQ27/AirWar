@@ -6,22 +6,22 @@ package DataStructures.MyLinkedList;
  */
 public abstract class AbstractLinkedList <T>{
 
-    protected Node<T> head;
-    protected int length;
+    Node<T> head;
+    int length;
 
     /**
      * add object as a node to the first place in the list
      * @param object object of the node
      */
     public void addFirst(T object){
-        addFirst(new Node(object, null, null));
+        addFirst(new Node(object));
     }
 
     /**
      * add as the first item in the list
      * @param node node to add to the linked list
      */
-    public void addFirst(Node node){
+    private void addFirst(Node node){
         addInPosition(node, 0);
     }
 
@@ -29,25 +29,39 @@ public abstract class AbstractLinkedList <T>{
      * add object as the last node in the list
      * @param object object of the node
      */
-    public void addLast(T object){
-        addLast(new Node(object, null, null));
+    void addLast(T object){
+        addLast(new Node(object));
     }
 
     /**
      * add node in the last place of the list
      * @param node node to add to the list
      */
-    public void addLast(Node node){
+    private void addLast(Node node){
         addInPosition(node, length);
     }
 
+    /**
+     * add object in the position specified
+     * @param object object to add
+     * @param position position to add
+     */
+    public void addInPosition(T object, int position){
+
+        if (position > length){
+            position = length;
+        } else if (position < 0){
+            position = 0;
+        }
+        addInPosition(new Node(object), position);
+    }
 
     /**
      * add node in the position said
      * @param node node to add in the list
      * @param position position where to add the node
      */
-    public abstract void addInPosition(Node node, int position);
+    protected abstract void addInPosition(Node node, int position);
 
     /**
      * remove the first node of the list
@@ -76,7 +90,7 @@ public abstract class AbstractLinkedList <T>{
      * remove the node in the position said
      * @param position position where to remove the node
      */
-    public abstract void removeInPosition(int position);
+    protected abstract void removeInPosition(int position);
 
     /**
      * Substitute the object in the node said
@@ -122,7 +136,7 @@ public abstract class AbstractLinkedList <T>{
      * @param object object to look for
      * @return @int with the position of the node in the list
      */
-    public int whereIs(T object){
+    private int whereIs(T object){
 
         Node aux = head;
         int result = -1;
@@ -139,9 +153,38 @@ public abstract class AbstractLinkedList <T>{
     }
 
     /**
+     * return the object in the position asked. useful if trying to use it as an array
+     * @param position int of the position asked
+     * @return object in the position
+     */
+    public T whatsIn(int position){
+
+        T result = null;
+
+        if (position < length) {
+            Node aux = head;
+
+            for (int i = 0; i < position; i++) {
+                aux = aux.getNext();
+            }
+
+            result = (T) aux.getObject();
+
+        } else {
+            System.out.println("Position Not Found");
+        }
+
+        return result;
+    }
+
+    /**
      * Method that switch the position of two nodes
      * @param position1 position of the first node to swap
      * @param position2 position of the second node to swap
      */
     public abstract void swap(int position1, int position2);
+
+    public int getlength(){
+        return this.length;
+    }
 }

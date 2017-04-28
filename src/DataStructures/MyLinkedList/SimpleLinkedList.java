@@ -9,11 +9,12 @@ public class SimpleLinkedList extends AbstractLinkedList {
     @Override
     public void addInPosition(Node node, int position) {
 
-        if (position == 0){
+        if (position == 0) {
 
             node.setNext(head);
             this.head = node;
-
+        }else if (position != 0 && this.head == null){
+            this.head = node;
         } else {
 
             Node aux1 = head;
@@ -58,7 +59,7 @@ public class SimpleLinkedList extends AbstractLinkedList {
     }
 
     @Override
-    public void swap(int position1, int position2){
+    public void swap(int position1, int position2) {
 
         try {
             if (position1 > position2) {
@@ -70,10 +71,10 @@ public class SimpleLinkedList extends AbstractLinkedList {
             Node aux1 = head;
             Node aux2 = head;
 
-            for (int i = 0; i < position2 - 1; i++){
-                if (i == position1 - 1){
+            for (int i = 0; i < position2 - 1; i++) {
+                if (i == position1 - 1) {
                     aux1 = aux2;
-                } else if (i == position2 - 1){
+                } else if (i == position2 - 1) {
                     break;
                 }
                 aux2 = aux2.getNext();
@@ -90,8 +91,9 @@ public class SimpleLinkedList extends AbstractLinkedList {
             change2.setNext(temp);
 
 
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.printf("%s%n", "Input unavailable");
         }
     }
 }
+
