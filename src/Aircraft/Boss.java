@@ -139,6 +139,7 @@ public class Boss extends Enemy {
         if (dying && timer <= 20) {
             timer++;
         }
+
         if (collision()) {
             if (resistance <= 0) {
                 blowup();
@@ -157,8 +158,8 @@ public class Boss extends Enemy {
     @Override
     public  void destroy(){
         super.destroy();
+        Player.fightBoss = false;
         if (game.stage < game.finalStage){
-            Player.fightBoss = false;
             game.changeLevel();
         }else{
             game.gameComplete();

@@ -1,5 +1,6 @@
 package Player;
 
+import Aircraft.Boss;
 import Aircraft.Enemy;
 import DataStructures.MyLinkedList.MyStack;
 import Main.GameStates;
@@ -86,7 +87,7 @@ public class Player extends Unidad{
         }
 
         if (fightBoss){
-            if (collisionBoss() && !invincibility){
+            if (collisionBoss()){
                 blowup();
             }
         }
@@ -119,27 +120,36 @@ public class Player extends Unidad{
     private boolean collisionBoss() {
         boolean aux = false;
         Node <Aircraft.Boss> current = game.screenQueue.getHead();
-        while (current!=null) {
-            if (current.getObject().projectiles != null && current.getObject().projectiles2 != null) {
-                Node<Projectile> projectileNode1 = current.getObject().projectiles.getHead();
-                Node<Projectile> projectileNode2 = current.getObject().projectiles2.getHead();
-                while (projectileNode1 != null && projectileNode2 != null) {
-                    if (projectileNode1.getObject().getBounds().intersects(getBounds())) {
-                        projectileNode1.getObject().destroy();
-                        aux = true;
-                        break;
-                    }
+        if (!this.getBounds().intersects(current.getObject().getBounds())) {
+            if (!this.invincibility) {
+                while (current != null) {
+                    if (current.getObject().projectiles != null && current.getObject().projectiles2 != null) {
+                        Node<Projectile> projectileNode1 = current.getObject().projectiles.getHead();
+                        Node<Projectile> projectileNode2 = current.getObject().projectiles2.getHead();
+                        while (projectileNode1 != null && projectileNode2 != null) {
+                            if (projectileNode1.getObject().getBounds().intersects(getBounds())) {
+                                projectileNode1.getObject().destroy();
+                                aux = true;
+                                break;
+                            }
 
-                    if (projectileNode2.getObject().getBounds().intersects(getBounds())){
-                        projectileNode2.getObject().destroy();
-                        aux = true;
-                        break;
+                            if (projectileNode2.getObject().getBounds().intersects(getBounds())) {
+                                projectileNode2.getObject().destroy();
+                                aux = true;
+                                break;
+                            }
+                            projectileNode1 = projectileNode1.getNext();
+                            projectileNode2 = projectileNode2.getNext();
+                        }
                     }
-                    projectileNode1 = projectileNode1.getNext();
-                    projectileNode2 = projectileNode2.getNext();
+                    current = current.getNext();
                 }
             }
-            current = current.getNext();
+        } else {
+            for (int i = 0; i <= Lifes; i++) {
+                this.blowup();
+            }
+            System.out.print("Nice try smartass");
         }
         return aux;
     }
