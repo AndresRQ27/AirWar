@@ -48,8 +48,8 @@ public class MouseInput implements MouseListener{
                     Sounds.BACKGROUND.loop();
                 }
             }
-            if (my >= 260 && my <= 310) {
-                if (mx >= 640/2 - 50 && mx <= 640/2 + 50) {
+            if (my >= 260 && my <= 300) {
+                if (mx >= 640/2 - 70 && mx <= 640/2 + 70) {
                     //Name button pressed
                     game.Write = true;
                 }

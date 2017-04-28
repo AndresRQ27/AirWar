@@ -53,9 +53,9 @@ public class Menu extends JFrame {
 
 
         g.setColor(Color.black);
-        Rectangle rect = new Rectangle(game.WIDTH / 2 -50,260,100,50);
+        Rectangle rect = new Rectangle(game.WIDTH / 2 -70,260,150,25);
         g.setColor(Color.white);
-        g.fillRect(game.WIDTH / 2 -50,260,100,50);
+        g.fillRect(game.WIDTH / 2 -70,260,150,25);
         g.draw(rect);
 
         g.setColor(Color.black);
