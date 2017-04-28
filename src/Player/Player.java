@@ -90,10 +90,10 @@ public class Player extends Unidad{
             if (collisionBoss()){
                 blowup();
             }
-        }
-
-        if (collision() && !invincibility){
-            blowup();
+        } else {
+            if (collision() && !invincibility) {
+                blowup();
+            }
         }
         if (W){
             movilidadY = -3;
@@ -121,7 +121,6 @@ public class Player extends Unidad{
         boolean aux = false;
         Node <Aircraft.Boss> current = game.screenQueue.getHead();
         if (!this.getBounds().intersects(current.getObject().getBounds())) {
-            if (!this.invincibility) {
                 while (current != null) {
                     if (current.getObject().projectiles != null && current.getObject().projectiles2 != null) {
                         Node<Projectile> projectileNode1 = current.getObject().projectiles.getHead();
@@ -129,13 +128,17 @@ public class Player extends Unidad{
                         while (projectileNode1 != null && projectileNode2 != null) {
                             if (projectileNode1.getObject().getBounds().intersects(getBounds())) {
                                 projectileNode1.getObject().destroy();
-                                aux = true;
+                                if (!this.invincibility) {
+                                    aux = true;
+                                }
                                 break;
                             }
 
                             if (projectileNode2.getObject().getBounds().intersects(getBounds())) {
                                 projectileNode2.getObject().destroy();
-                                aux = true;
+                                if (!this.invincibility) {
+                                    aux = true;
+                                }
                                 break;
                             }
                             projectileNode1 = projectileNode1.getNext();
@@ -144,7 +147,6 @@ public class Player extends Unidad{
                     }
                     current = current.getNext();
                 }
-            }
         } else {
             for (int i = 0; i <= Lifes; i++) {
                 this.blowup();

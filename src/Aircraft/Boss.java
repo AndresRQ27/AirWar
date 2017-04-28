@@ -51,7 +51,7 @@ public class Boss extends Enemy {
         this.movilidadY = 0;
         this.alive = true;
         this.timer = 0;
-        this.ammunition = ProjectileTypes.BULLET;
+        this.ammunition = ProjectileTypes.MISSILE;
         this.dying = false;
         this.isEvil = true;
         this.scoreValue = 2000;
@@ -99,19 +99,29 @@ public class Boss extends Enemy {
     @Override
     public void moveProjectile(){
         int index = 0;
-        if (projectiles != null && projectiles2 != null){
+        int index2 = 0;
+        if (projectiles != null){
             Node<Projectile> current = projectiles.getHead();
-            Node<Projectile> current2 = projectiles2.getHead();
-            while (current != null && current2 != null){
-                current.getObject().moveBossProjectile();
-                current2.getObject().moveBossProjectile();
-                if (current.getObject().alive && current2.getObject().alive){
+            while (current != null){
+                current.getObject().moveEnemyProjectile();
+                if (current.getObject().alive){
                     index++;
                 }else{
                     projectiles.removeInPosition(index);
-                    projectiles2.removeInPosition(index);
                 }
                 current = current.getNext();
+            }
+        }
+
+        if (projectiles2 != null){
+            Node<Projectile> current2 = projectiles2.getHead();
+            while (current2 != null){
+                current2.getObject().moveEnemyProjectile();
+                if (current2.getObject().alive){
+                    index2++;
+                } else {
+                    projectiles2.removeInPosition(index2);
+                }
                 current2 = current2.getNext();
             }
         }
@@ -119,13 +129,18 @@ public class Boss extends Enemy {
 
     @Override
     public void paintProjectiles(Graphics2D g){
-        if (projectiles != null && projectiles2 != null){
+        if (projectiles != null){
             Node <Projectile> current = projectiles.getHead();
-            Node <Projectile> current2 = projectiles2.getHead();
-            while (current != null && current2 != null){
+            while (current != null){
                 current.getObject().paint(g);
-                current2.getObject().paint(g);
                 current = current.getNext();
+            }
+        }
+
+        if (projectiles2 != null){
+            Node <Projectile> current2 = projectiles2.getHead();
+            while (current2 != null){
+                current2.getObject().paint(g);
                 current2 = current2.getNext();
             }
         }

@@ -33,14 +33,6 @@ public abstract class Projectile {
         posY += movilidadY;
     }
 
-    public void moveBossProjectile(){
-
-        if (posY + movilidadY > game.HEIGHT) {
-            destroy();
-        }
-        posY += movilidadY;
-    }
-
     public void destroy() {
         alive = false;
     }
