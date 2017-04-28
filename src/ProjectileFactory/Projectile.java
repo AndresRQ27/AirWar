@@ -2,7 +2,7 @@ package ProjectileFactory;
 
 import DataStructures.MyLinkedList.Node;
 import Main.Game;
-import Unidad.Unidad;
+import Aircraft.Unidad;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -54,8 +54,8 @@ public abstract class Projectile {
 
     public boolean collision() {
         boolean aux = false;
-        if (game.enemigosPantalla != null) {
-            Node<Unidad> current = game.enemigosPantalla.getHead();
+        if (game.screenQueue != null) {
+            Node<Unidad> current = game.screenQueue.getHead();
             while (current != null) {
                 if (current.getObject().getBounds().intersects(this.getBounds())) {
                     aux = true;

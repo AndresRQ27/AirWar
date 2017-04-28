@@ -1,6 +1,6 @@
 package ProjectileFactory;
 
-import Jugador.Player;
+import Player.Player;
 import Main.Game;
 
 import javax.imageio.ImageIO;
