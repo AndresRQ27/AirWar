@@ -76,6 +76,17 @@ public class Boss extends Enemy {
     }
 
     @Override
+    public void update(){
+        if (alive && isEvil){
+            if(posX % 10 == 0){
+                shoot();
+            }
+        }
+        moveProjectile();
+        move();
+    }
+
+    @Override
     public void shoot() {
         try {
             projectiles.addFirst(ProjectileFactory.getProjectile(ammunition,game,player,posX+(this.ancho)/4,(this.alto-60),1));
@@ -92,8 +103,8 @@ public class Boss extends Enemy {
             Node<Projectile> current = projectiles.getHead();
             Node<Projectile> current2 = projectiles2.getHead();
             while (current != null && current2 != null){
-                current.getObject().moveBossProjectile(movimientoReverso, this);
-                current2.getObject().moveBossProjectile(movimientoReverso, this);
+                current.getObject().moveBossProjectile();
+                current2.getObject().moveBossProjectile();
                 if (current.getObject().alive && current2.getObject().alive){
                     index++;
                 }else{
@@ -147,6 +158,7 @@ public class Boss extends Enemy {
     public  void destroy(){
         super.destroy();
         if (game.stage < game.finalStage){
+            Player.fightBoss = false;
             game.changeLevel();
         }else{
             game.gameComplete();

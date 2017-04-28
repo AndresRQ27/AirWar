@@ -33,22 +33,12 @@ public abstract class Projectile {
         posY += movilidadY;
     }
 
-    public void moveBossProjectile(boolean movimientoReverso, Aircraft.Boss boss){
+    public void moveBossProjectile(){
 
         if (posY + movilidadY > game.HEIGHT) {
             destroy();
         }
         posY += movilidadY;
-
-        if (boss.alive) {
-            int movilidadX = 1;
-            if (!movimientoReverso) {
-                posX += movilidadX;
-            }
-            if (movimientoReverso) {
-                posX -= movilidadX;
-            }
-        }
     }
 
     public void destroy() {

@@ -36,6 +36,7 @@ public class Player extends Unidad{
     public int score;
     private int scoreAux;
     public boolean shield;
+    public static boolean fightBoss = false;
 
     public Player (Game game){
         this.game = game;
@@ -83,6 +84,13 @@ public class Player extends Unidad{
                 timer++;
             }
         }
+
+        if (fightBoss){
+            if (collisionBoss() && !invincibility){
+                blowup();
+            }
+        }
+
         if (collision() && !invincibility){
             blowup();
         }
@@ -106,6 +114,34 @@ public class Player extends Unidad{
         if (posY + movilidadY > 0 && posY + movilidadY <game.getHeight()-LADOSPRITE){
             posY +=movilidadY;
         }
+    }
+
+    private boolean collisionBoss() {
+        boolean aux = false;
+        Node <Aircraft.Boss> current = game.screenQueue.getHead();
+        while (current!=null) {
+            if (current.getObject().projectiles != null && current.getObject().projectiles2 != null) {
+                Node<Projectile> projectileNode1 = current.getObject().projectiles.getHead();
+                Node<Projectile> projectileNode2 = current.getObject().projectiles2.getHead();
+                while (projectileNode1 != null && projectileNode2 != null) {
+                    if (projectileNode1.getObject().getBounds().intersects(getBounds())) {
+                        projectileNode1.getObject().destroy();
+                        aux = true;
+                        break;
+                    }
+
+                    if (projectileNode2.getObject().getBounds().intersects(getBounds())){
+                        projectileNode2.getObject().destroy();
+                        aux = true;
+                        break;
+                    }
+                    projectileNode1 = projectileNode1.getNext();
+                    projectileNode2 = projectileNode2.getNext();
+                }
+            }
+            current = current.getNext();
+        }
+        return aux;
     }
 
     @Override

@@ -191,6 +191,7 @@ public class Game extends JPanel {
                     if (boss != null) {
                         screenQueue.enqueue(boss.getObject());
                         bossQueue.dequeue();
+                        Player.fightBoss = true;
                     }
                 }
             }
@@ -228,6 +229,7 @@ public class Game extends JPanel {
     }
 
     private void generateEnemiesQueue(int number){
+
         double planes = 3*number/4;
         double turrets = number/4 + 1;
         new EnemiesList();
