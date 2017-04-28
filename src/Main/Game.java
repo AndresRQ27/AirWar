@@ -6,6 +6,7 @@ import Aircraft.EnemiesList;
 import Aircraft.EnemyTypes;
 import DataStructures.MyLinkedList.MyQueue;
 import DataStructures.MyLinkedList.Node;
+import DataStructures.MyLinkedList.SimpleLinkedList;
 import Player.Player;
 import Server.Server;
 import javafx.stage.Stage;
@@ -69,10 +70,16 @@ public class Game extends JPanel {
 
                 if(State ==  GameStates.GAME ) {
                     player.keyReleased(e);
-                }else if(State == GameStates.MENU && Write == true){
-                    nombre = nombre + e.getKeyChar();
-                }else{
+                }else if(State == GameStates.MENU && Write == true) {
+                    if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE && nombre.length() > 0) {
+                        nombre = nombre.substring(0, nombre.length() - 1);
+                    }else if(nombre.length() < 9){
+                        if (e.getKeyText(e.getKeyCode()).length() ==  1) {
+                            nombre = nombre + e.getKeyChar();
+                        }else{
 
+                        }
+                    }
                 }
 
             }
@@ -104,6 +111,7 @@ public class Game extends JPanel {
         this.planesQueue = new MyQueue();
         this.turretQueue = new MyQueue();
         this.bossQueue = new MyQueue();
+        this.player.projectiles = new SimpleLinkedList();
         if (stage < 3){
             this.numEnemies = 3;
         }else if (stage < 6){

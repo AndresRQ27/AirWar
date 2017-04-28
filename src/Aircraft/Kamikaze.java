@@ -32,8 +32,8 @@ class Kamikaze extends Enemy {
         this.posX = x;
         this.posY = y;
         this.resistance = 2;
-        this.movilidadX = 3;
-        this.movilidadY = 2;
+        this.movilidadX = 4;
+        this.movilidadY = 4;
         this.alive = true;
         this.timer = 0;
         this.dying = false;
@@ -70,7 +70,7 @@ class Kamikaze extends Enemy {
             }
             posX += movilidadX;
         }
-        posY += movilidadY;
+        posY += 2;
     }
 
     @Override

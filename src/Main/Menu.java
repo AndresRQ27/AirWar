@@ -59,7 +59,7 @@ public class Menu extends JFrame {
         g.draw(rect);
 
         g.setColor(Color.black);
-        Font fnt3 = new Font("arial", Font.BOLD, 20);
+        Font fnt3 = new Font("Courier New", Font.BOLD, 19);
         g.setFont(fnt3);
         g.drawString(game.nombre, game.WIDTH / 2 - 50,280);
 

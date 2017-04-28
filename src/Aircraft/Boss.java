@@ -171,6 +171,17 @@ public class Boss extends Enemy {
             movimientoReverso = false;
     }
     @Override
+    public void blowup(){
+        dying = true;
+        player.score+=scoreValue;
+        try {
+            this.sprite = ImageIO.read(getClass().getResourceAsStream("/Sprites/boss_blowup.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public  void destroy(){
         super.destroy();
         Player.fightBoss = false;
